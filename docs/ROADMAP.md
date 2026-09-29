@@ -13,7 +13,8 @@
 - [ ] v0.9B — Production OAuth credentials & on-device certification
 - [x] v0.10 — Premium Engine core
 - [ ] v0.10B — RevenueCat/store production configuration & sandbox certification
-- [ ] v0.11 — Release Hardening
+- [x] v0.11 — Release Hardening
+- [ ] v0.12 — Stable Web Preview + release automation
 - [ ] v1.0 — Production Release
 
 TasteAI remains useful offline and without login, Premium or a local model.

@@ -126,6 +126,21 @@ class AppStrings {
 
   String resultCount(int count) => '$results: $count';
 
+  static bool get translationsHaveParity {
+    final Set<String> base =
+        _translations['en']!.keys.toSet();
+    for (final Locale locale in supportedLocales) {
+      final Map<String, String>? table =
+          _translations[locale.languageCode];
+      if (table == null) return false;
+      if (!setEquals(base, table.keys.toSet())) return false;
+      if (table.values.any((String value) => value.trim().isEmpty)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   static const Map<String, Map<String, String>> _translations = <String, Map<String, String>>{
     'en': <String, String>{
       'tasteAiPlus': 'TasteAI Plus', 'plusTitle': 'Unlock TasteAI Plus', 'plusBody': 'Premium recipes and optional local intelligence, without cloud AI fees.', 'plusBenefitPremiumRecipes': 'Access recipes marked Premium', 'plusBenefitLocalAi': 'Optional downloadable local AI when certified', 'plusBenefitFutureFeatures': 'Future Plus features without weakening the free core', 'plusActive': 'TasteAI Plus is active', 'plusProfileBody': 'View Plus options and restore purchases', 'premiumNotConfigured': 'Premium purchases are not configured in this development build.', 'premiumWebUnavailable': 'Store purchases are not available in this Web Preview.', 'noPremiumPackages': 'No purchasable Plus package is currently available from the store.', 'subscribeFor': 'Continue for', 'restorePurchases': 'Restore purchases', 'premiumError': 'The store request could not be completed.', 'premiumPriceStoreNotice': 'Prices and billing periods are provided by the device store.',

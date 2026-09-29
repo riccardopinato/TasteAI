@@ -6,10 +6,13 @@ on:
       - 'tasteai-flutter-v*'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 35
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -23,6 +26,15 @@ jobs:
       - name: Generate missing platform scaffolds
         run: flutter create . --platforms=android,web --org com.riccardopinato --project-name taste_ai
 
+      - name: Normalize Android application ID
+        shell: bash
+        run: |
+          if [ -d android ]; then
+            grep -RIl "com.riccardopinato.taste_ai" android --exclude-dir=.gradle | while read -r file; do
+              sed -i 's/com\.riccardopinato\.taste_ai/com.riccardopinato.tasteai/g' "$file"
+            done
+          fi
+
       - name: Remove generated template test
         run: rm -f test/widget_test.dart
 
@@ -32,11 +44,60 @@ jobs:
       - name: Analyze
         run: flutter analyze
 
-      - name: Tests
-        run: flutter test
+      - name: Tests with coverage
+        run: flutter test --coverage
+
+      - name: Reject cloud AI secrets or Gemini runtime code
+        shell: bash
+        run: |
+          if grep -RniE "GEMINI_API_KEY|generativelanguage\.googleapis\.com|google_generative_ai" lib test assets; then
+            echo "Forbidden cloud AI residue found in Flutter runtime."
+            exit 1
+          fi
+
+      - name: Reject bundled model weights
+        shell: bash
+        run: |
+          bad=0
+          while IFS= read -r file; do
+            case "$file" in
+              *.cact|*.gguf|*.onnx|*.tflite|*.bin)
+                echo "Model weight must not be bundled in base app: $file"
+                bad=1
+                ;;
+            esac
+          done < <(git ls-files)
+          exit "$bad"
 
       - name: Build Android ARM64 release
         run: flutter build apk --release --target-platform android-arm64
 
+      - name: Build Android App Bundle
+        run: flutter build appbundle --release
+
       - name: Build Web release
         run: flutter build web --release
+
+      - name: Release size report
+        shell: bash
+        run: |
+          echo "APK:"
+          du -h build/app/outputs/flutter-apk/app-release.apk
+          echo "AAB:"
+          du -h build/app/outputs/bundle/release/app-release.aab
+          echo "Web:"
+          du -sh build/web
+
+      - name: Persist Flutter release scaffolding
+        if: github.ref == 'refs/heads/tasteai-flutter-v0.11-release-hardening'
+        shell: bash
+        run: |
+          git add android pubspec.lock
+          if git diff --cached --quiet; then
+            echo "Release scaffolding already tracked."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: persist Flutter release scaffold [skip ci]"
+          git push
