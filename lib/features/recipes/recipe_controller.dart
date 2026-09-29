@@ -5,19 +5,24 @@ import 'package:flutter/foundation.dart';
 import '../../data/preferences/app_preferences_store.dart';
 import '../../domain/recipe/recipe.dart';
 import '../../domain/recipe/recipe_catalog.dart';
+import '../../domain/search/unified_recipe_retrieval_service.dart';
 
 class RecipeController extends ChangeNotifier {
   RecipeController({
     required AppPreferencesStore preferencesStore,
     Future<RecipeCatalog> Function()? catalogLoader,
     Random? random,
+    UnifiedRecipeRetrievalService? retrievalService,
   })  : _preferencesStore = preferencesStore,
         _catalogLoader = catalogLoader ?? RecipeCatalog.loadAsset,
-        _random = random ?? Random();
+        _random = random ?? Random(),
+        _retrievalService = retrievalService ??
+            UnifiedRecipeRetrievalService(preferencesStore: preferencesStore);
 
   final AppPreferencesStore _preferencesStore;
   final Future<RecipeCatalog> Function() _catalogLoader;
   final Random _random;
+  final UnifiedRecipeRetrievalService _retrievalService;
 
   bool _loading = true;
   Object? _error;
@@ -30,13 +35,22 @@ class RecipeController extends ChangeNotifier {
   List<Recipe> get recipes => _recipes;
   Set<String> get favoriteIds => Set<String>.unmodifiable(_favoriteIds);
   Recipe? get inspiredRecipe => _inspiredRecipe;
+  bool get searchReady => _retrievalService.ready;
+  int get indexedTermCount => _retrievalService.indexedTermCount;
 
   List<Recipe> get favoriteRecipes {
-    return _recipes.where((Recipe recipe) => _favoriteIds.contains(recipe.id)).toList(growable: false);
+    return _recipes
+        .where((Recipe recipe) => _favoriteIds.contains(recipe.id))
+        .toList(growable: false);
   }
 
   List<String> get categories {
-    final List<String> values = _recipes.map((Recipe recipe) => recipe.category).where((String value) => value.isNotEmpty).toSet().toList()..sort();
+    final List<String> values = _recipes
+        .map((Recipe recipe) => recipe.category)
+        .where((String value) => value.isNotEmpty)
+        .toSet()
+        .toList()
+      ..sort();
     return values;
   }
 
@@ -52,7 +66,14 @@ class RecipeController extends ChangeNotifier {
       final RecipeCatalog catalog = values[0] as RecipeCatalog;
       _recipes = catalog.readyRecipes;
       _favoriteIds = values[1] as Set<String>;
-      _favoriteIds = _favoriteIds.where((String id) => _recipes.any((Recipe recipe) => recipe.id == id)).toSet();
+      _favoriteIds = _favoriteIds
+          .where((String id) => _recipes.any((Recipe recipe) => recipe.id == id))
+          .toSet();
+
+      await _retrievalService.initialize(
+        recipes: _recipes,
+        catalogVersion: catalog.catalogVersion,
+      );
     } catch (error) {
       _error = error;
     } finally {
@@ -73,19 +94,47 @@ class RecipeController extends ChangeNotifier {
     await _preferencesStore.saveFavoriteIds(_favoriteIds);
   }
 
+  List<RecipeRetrievalHit> searchRecipes({
+    String query = '',
+    String languageCode = 'en',
+    int? maxMinutes,
+    String? category,
+    String? difficulty,
+    bool antiWasteOnly = false,
+    Set<String> requiredDiets = const <String>{},
+    Set<String> excludedAllergens = const <String>{},
+    Set<String> requiredTechniques = const <String>{},
+    int? limit,
+  }) {
+    return _retrievalService.search(
+      RecipeRetrievalQuery(
+        text: query,
+        languageCode: languageCode,
+        maxMinutes: maxMinutes,
+        category: category,
+        difficulty: difficulty,
+        antiWasteOnly: antiWasteOnly,
+        requiredDiets: requiredDiets,
+        excludedAllergens: excludedAllergens,
+        requiredTechniques: requiredTechniques,
+        limit: limit,
+      ),
+    );
+  }
+
   Recipe? inspire({
     String? category,
     String? difficulty,
     bool antiWasteOnly = false,
   }) {
-    final List<Recipe> candidates = _recipes.where((Recipe recipe) {
-      if (category != null && category.isNotEmpty && recipe.category != category) return false;
-      if (difficulty != null && difficulty.isNotEmpty && recipe.difficulty != difficulty) return false;
-      if (antiWasteOnly && !recipe.antiWaste.enabled) return false;
-      return true;
-    }).toList(growable: false);
-
-    _inspiredRecipe = candidates.isEmpty ? null : candidates[_random.nextInt(candidates.length)];
+    final List<RecipeRetrievalHit> hits = searchRecipes(
+      category: category,
+      difficulty: difficulty,
+      antiWasteOnly: antiWasteOnly,
+    );
+    _inspiredRecipe = hits.isEmpty
+        ? null
+        : hits[_random.nextInt(hits.length)].recipe;
     notifyListeners();
     return _inspiredRecipe;
   }
