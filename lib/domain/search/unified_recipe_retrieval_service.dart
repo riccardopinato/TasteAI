@@ -1,6 +1,9 @@
+import 'dart:math' as math;
+
 import '../../data/preferences/app_preferences_store.dart';
 import '../recipe/recipe.dart';
 import 'full_text_recipe_index.dart';
+import 'smart_recipe_query.dart';
 
 class RecipeRetrievalHit {
   const RecipeRetrievalHit({
@@ -41,9 +44,12 @@ class RecipeRetrievalQuery {
 class UnifiedRecipeRetrievalService {
   UnifiedRecipeRetrievalService({
     required AppPreferencesStore preferencesStore,
-  }) : _preferencesStore = preferencesStore;
+    SmartRecipeQueryParser smartQueryParser = const SmartRecipeQueryParser(),
+  })  : _preferencesStore = preferencesStore,
+        _smartQueryParser = smartQueryParser;
 
   final AppPreferencesStore _preferencesStore;
+  final SmartRecipeQueryParser _smartQueryParser;
 
   List<Recipe> _recipes = const <Recipe>[];
   Map<String, Recipe> _recipesById = const <String, Recipe>{};
@@ -76,6 +82,57 @@ class UnifiedRecipeRetrievalService {
     if (restored == null) {
       await _preferencesStore.saveRecipeSearchIndex(_index!.encodeSnapshot(signature));
     }
+  }
+
+  SmartRecipeIntent parseSmartIntent(
+    String text, {
+    String languageCode = 'it',
+  }) {
+    return _smartQueryParser.parse(text, languageCode: languageCode);
+  }
+
+  List<RecipeRetrievalHit> searchSmart({
+    required String text,
+    String languageCode = 'en',
+    int? maxMinutes,
+    String? category,
+    String? difficulty,
+    bool antiWasteOnly = false,
+    Set<String> requiredDiets = const <String>{},
+    Set<String> excludedAllergens = const <String>{},
+    Set<String> requiredTechniques = const <String>{},
+    int? limit,
+  }) {
+    final SmartRecipeIntent intent = _smartQueryParser.parse(
+      text,
+      languageCode: languageCode,
+    );
+    final int? mergedMaxMinutes = maxMinutes == null
+        ? intent.maxMinutes
+        : intent.maxMinutes == null
+            ? maxMinutes
+            : math.min(maxMinutes, intent.maxMinutes!);
+
+    return search(
+      RecipeRetrievalQuery(
+        text: intent.retrievalText,
+        languageCode: languageCode,
+        maxMinutes: mergedMaxMinutes,
+        category: category ?? intent.category,
+        difficulty: difficulty,
+        antiWasteOnly: antiWasteOnly || intent.antiWasteOnly,
+        requiredDiets: <String>{...requiredDiets, ...intent.requiredDiets},
+        excludedAllergens: <String>{
+          ...excludedAllergens,
+          ...intent.excludedAllergens,
+        },
+        requiredTechniques: <String>{
+          ...requiredTechniques,
+          ...intent.requiredTechniques,
+        },
+        limit: limit,
+      ),
+    );
   }
 
   List<RecipeRetrievalHit> search(RecipeRetrievalQuery query) {

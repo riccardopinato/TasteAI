@@ -106,19 +106,17 @@ class RecipeController extends ChangeNotifier {
     Set<String> requiredTechniques = const <String>{},
     int? limit,
   }) {
-    return _retrievalService.search(
-      RecipeRetrievalQuery(
-        text: query,
-        languageCode: languageCode,
-        maxMinutes: maxMinutes,
-        category: category,
-        difficulty: difficulty,
-        antiWasteOnly: antiWasteOnly,
-        requiredDiets: requiredDiets,
-        excludedAllergens: excludedAllergens,
-        requiredTechniques: requiredTechniques,
-        limit: limit,
-      ),
+    return _retrievalService.searchSmart(
+      text: query,
+      languageCode: languageCode,
+      maxMinutes: maxMinutes,
+      category: category,
+      difficulty: difficulty,
+      antiWasteOnly: antiWasteOnly,
+      requiredDiets: requiredDiets,
+      excludedAllergens: excludedAllergens,
+      requiredTechniques: requiredTechniques,
+      limit: limit,
     );
   }
 
