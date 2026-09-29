@@ -101,6 +101,15 @@ class RecipeController extends ChangeNotifier {
 
   bool isFavorite(String recipeId) => _favoriteIds.contains(recipeId);
 
+  Future<void> replaceFavorites(Set<String> ids) async {
+    final Set<String> validIds = _recipes
+        .map((Recipe recipe) => recipe.id)
+        .toSet();
+    _favoriteIds = ids.where(validIds.contains).toSet();
+    notifyListeners();
+    await _preferencesStore.saveFavoriteIds(_favoriteIds);
+  }
+
   Future<void> toggleFavorite(String recipeId) async {
     if (_favoriteIds.contains(recipeId)) {
       _favoriteIds.remove(recipeId);

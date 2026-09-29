@@ -9,9 +9,10 @@
 - [x] v0.7 — Local Intelligence Runtime
 - [x] v0.8A — Needle 3 Candidate Adapter & Benchmark Harness
 - [ ] v0.8B — Needle 3 Native Model Pack & On-device Certification
-- [ ] v0.9 — Profile & Sync
+- [x] v0.9 — Profile & Google Drive Sync core
+- [ ] v0.9B — Production OAuth credentials & on-device certification
 - [ ] v0.10 — Premium
 - [ ] v0.11 — Release Hardening
 - [ ] v1.0 — Production Release
 
-The base app remains fully functional without a local model. Needle 3 will be an optional downloadable capability, not a 35 MB mandatory addition to every install.
+TasteAI remains fully usable without login, cloud sync or a local AI model.

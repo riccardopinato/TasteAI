@@ -20,6 +20,19 @@ class AppSettingsController extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> applyBackup({
+    required bool metricUnits,
+    required String? languageCode,
+  }) async {
+    _metricUnits = metricUnits;
+    _languageCode = languageCode;
+    notifyListeners();
+    await Future.wait<void>(<Future<void>>[
+      _store.saveMetricUnits(metricUnits),
+      _store.saveLanguageCode(languageCode),
+    ]);
+  }
+
   Future<void> setMetricUnits(bool value) async {
     if (_metricUnits == value) return;
     _metricUnits = value;

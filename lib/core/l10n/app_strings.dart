@@ -83,6 +83,19 @@ class AppStrings {
   String get systemDefault => _value('systemDefault');
   String get catalogError => _value('catalogError');
   String get retry => _value('retry');
+  String get account => _value('account');
+  String get googleOptional => _value('googleOptional');
+  String get googleNotConfigured => _value('googleNotConfigured');
+  String get googleUnsupported => _value('googleUnsupported');
+  String get signInGoogle => _value('signInGoogle');
+  String get signOut => _value('signOut');
+  String get backupSync => _value('backupSync');
+  String get backupDescription => _value('backupDescription');
+  String get backupNow => _value('backupNow');
+  String get restoreBackup => _value('restoreBackup');
+  String get syncSuccess => _value('syncSuccess');
+  String get noCloudBackup => _value('noCloudBackup');
+  String get syncError => _value('syncError');
 
   String categoryLabel(String category) {
     final String key = 'category_$category';
@@ -100,6 +113,7 @@ class AppStrings {
 
   static const Map<String, Map<String, String>> _translations = <String, Map<String, String>>{
     'en': <String, String>{
+      'account': 'Account', 'googleOptional': 'Google Sign-In is optional. TasteAI remains fully usable as a guest.', 'googleNotConfigured': 'Google Sign-In is not configured in this build. Add OAuth client IDs at release time.', 'googleUnsupported': 'Interactive Google Sign-In is not available on this platform build.', 'signInGoogle': 'Sign in with Google', 'signOut': 'Sign out', 'backupSync': 'Backup & sync', 'backupDescription': 'Back up favorites and settings in your private Google Drive app data.', 'backupNow': 'Back up now', 'restoreBackup': 'Restore latest backup', 'syncSuccess': 'Backup data synchronized.', 'noCloudBackup': 'No TasteAI backup found in Google Drive.', 'syncError': 'Unable to complete Google Drive sync.',
       'antiWasteTitle': 'Cook what you already have', 'antiWasteBody': 'Enter leftovers or ingredients from your fridge. TasteAI only ranks grounded recipes from the local catalog.', 'antiWasteInputHint': 'e.g. stale bread, tomatoes, zucchini peels…', 'antiWasteAnalyze': 'Find zero-waste recipes', 'antiWasteNoMatch': 'No grounded zero-waste recipe matches these ingredients yet.', 'antiWasteMatched': 'Matched', 'antiWasteAdditional': 'You may also need', 'antiWasteCompatibility': 'Compatibility', 'antiWasteFound': '{count} grounded suggestions',
       'appName': 'TasteAI', 'inspire': 'Inspire me', 'search': 'Search', 'antiWaste': 'Zero waste',
       'favorites': 'Favorites', 'profile': 'Profile', 'searchHint': 'Search recipes, ingredients or techniques…',
@@ -117,6 +131,7 @@ class AppStrings {
       'category_dessert': 'Dessert', 'category_side': 'Side',
     },
     'it': <String, String>{
+      'account': 'Account', 'googleOptional': 'L’accesso Google è opzionale. TasteAI resta completamente utilizzabile come ospite.', 'googleNotConfigured': 'Google Sign-In non è configurato in questa build. Gli ID OAuth verranno aggiunti in release.', 'googleUnsupported': 'L’accesso Google interattivo non è disponibile in questa build della piattaforma.', 'signInGoogle': 'Accedi con Google', 'signOut': 'Esci', 'backupSync': 'Backup e sincronizzazione', 'backupDescription': 'Salva preferiti e impostazioni nello spazio dati privato di Google Drive.', 'backupNow': 'Esegui backup', 'restoreBackup': 'Ripristina ultimo backup', 'syncSuccess': 'Dati di backup sincronizzati.', 'noCloudBackup': 'Nessun backup TasteAI trovato su Google Drive.', 'syncError': 'Impossibile completare la sincronizzazione Google Drive.',
       'antiWasteTitle': 'Cucina quello che hai già', 'antiWasteBody': 'Inserisci avanzi o ingredienti del frigo. TasteAI ordina solo ricette reali presenti nel catalogo locale.', 'antiWasteInputHint': 'es. pane raffermo, pomodori, bucce di zucchina…', 'antiWasteAnalyze': 'Trova ricette anti-spreco', 'antiWasteNoMatch': 'Non ci sono ancora ricette anti-spreco del catalogo compatibili con questi ingredienti.', 'antiWasteMatched': 'Corrispondenze', 'antiWasteAdditional': 'Potrebbero servire anche', 'antiWasteCompatibility': 'Compatibilità', 'antiWasteFound': '{count} suggerimenti basati sul catalogo',
       'appName': 'TasteAI', 'inspire': 'Ispirami', 'search': 'Cerca', 'antiWaste': 'Anti-spreco',
       'favorites': 'Preferiti', 'profile': 'Profilo', 'searchHint': 'Cerca ricette, ingredienti o tecniche…',
@@ -134,6 +149,7 @@ class AppStrings {
       'category_dessert': 'Dessert', 'category_side': 'Contorno',
     },
     'es': <String, String>{
+      'account': 'Cuenta', 'googleOptional': 'Google Sign-In es opcional. TasteAI funciona completamente como invitado.', 'googleNotConfigured': 'Google Sign-In no está configurado en esta compilación. Los IDs OAuth se añadirán en la versión final.', 'googleUnsupported': 'El acceso interactivo con Google no está disponible en esta compilación.', 'signInGoogle': 'Iniciar sesión con Google', 'signOut': 'Cerrar sesión', 'backupSync': 'Copia y sincronización', 'backupDescription': 'Guarda favoritos y ajustes en los datos privados de Google Drive.', 'backupNow': 'Crear copia ahora', 'restoreBackup': 'Restaurar última copia', 'syncSuccess': 'Datos de copia sincronizados.', 'noCloudBackup': 'No se encontró ninguna copia de TasteAI en Google Drive.', 'syncError': 'No se pudo completar la sincronización con Google Drive.',
       'antiWasteTitle': 'Cocina lo que ya tienes', 'antiWasteBody': 'Introduce sobras o ingredientes. TasteAI solo ordena recetas reales del catálogo local.', 'antiWasteInputHint': 'p. ej. pan duro, tomates, pieles de calabacín…', 'antiWasteAnalyze': 'Buscar recetas anti-desperdicio', 'antiWasteNoMatch': 'Aún no hay una receta del catálogo compatible con estos ingredientes.', 'antiWasteMatched': 'Coincidencias', 'antiWasteAdditional': 'También puedes necesitar', 'antiWasteCompatibility': 'Compatibilidad', 'antiWasteFound': '{count} sugerencias basadas en el catálogo',
       'appName': 'TasteAI', 'inspire': 'Inspírame', 'search': 'Buscar', 'antiWaste': 'Cero desperdicio',
       'favorites': 'Favoritos', 'profile': 'Perfil', 'searchHint': 'Busca recetas, ingredientes o técnicas…',
@@ -151,6 +167,7 @@ class AppStrings {
       'category_dessert': 'Postre', 'category_side': 'Guarnición',
     },
     'fr': <String, String>{
+      'account': 'Compte', 'googleOptional': 'Google Sign-In est facultatif. TasteAI reste entièrement utilisable en mode invité.', 'googleNotConfigured': 'Google Sign-In n’est pas configuré dans cette build. Les identifiants OAuth seront ajoutés à la release.', 'googleUnsupported': 'La connexion Google interactive n’est pas disponible dans cette build.', 'signInGoogle': 'Se connecter avec Google', 'signOut': 'Se déconnecter', 'backupSync': 'Sauvegarde et synchronisation', 'backupDescription': 'Sauvegardez favoris et réglages dans les données privées Google Drive.', 'backupNow': 'Sauvegarder maintenant', 'restoreBackup': 'Restaurer la dernière sauvegarde', 'syncSuccess': 'Données de sauvegarde synchronisées.', 'noCloudBackup': 'Aucune sauvegarde TasteAI trouvée sur Google Drive.', 'syncError': 'Impossible de terminer la synchronisation Google Drive.',
       'antiWasteTitle': 'Cuisinez ce que vous avez déjà', 'antiWasteBody': 'Saisissez vos restes ou ingrédients. TasteAI classe uniquement les recettes réelles du catalogue local.', 'antiWasteInputHint': 'ex. pain rassis, tomates, épluchures de courgette…', 'antiWasteAnalyze': 'Trouver des recettes anti-gaspillage', 'antiWasteNoMatch': 'Aucune recette anti-gaspillage du catalogue ne correspond encore à ces ingrédients.', 'antiWasteMatched': 'Correspondances', 'antiWasteAdditional': 'Il peut aussi falloir', 'antiWasteCompatibility': 'Compatibilité', 'antiWasteFound': '{count} suggestions issues du catalogue',
       'appName': 'TasteAI', 'inspire': 'Inspirez-moi', 'search': 'Rechercher', 'antiWaste': 'Anti-gaspillage',
       'favorites': 'Favoris', 'profile': 'Profil', 'searchHint': 'Rechercher recettes, ingrédients ou techniques…',
@@ -168,6 +185,7 @@ class AppStrings {
       'category_dessert': 'Dessert', 'category_side': 'Accompagnement',
     },
     'pt': <String, String>{
+      'account': 'Conta', 'googleOptional': 'O Google Sign-In é opcional. O TasteAI continua totalmente utilizável como convidado.', 'googleNotConfigured': 'O Google Sign-In não está configurado nesta build. Os IDs OAuth serão adicionados na release.', 'googleUnsupported': 'O login interativo do Google não está disponível nesta build.', 'signInGoogle': 'Entrar com Google', 'signOut': 'Sair', 'backupSync': 'Backup e sincronização', 'backupDescription': 'Guarde favoritos e definições nos dados privados do Google Drive.', 'backupNow': 'Fazer backup agora', 'restoreBackup': 'Restaurar último backup', 'syncSuccess': 'Dados de backup sincronizados.', 'noCloudBackup': 'Nenhum backup TasteAI encontrado no Google Drive.', 'syncError': 'Não foi possível concluir a sincronização com o Google Drive.',
       'antiWasteTitle': 'Cozinhe o que já tem', 'antiWasteBody': 'Insira sobras ou ingredientes. O TasteAI classifica apenas receitas reais do catálogo local.', 'antiWasteInputHint': 'ex. pão amanhecido, tomates, cascas de curgete…', 'antiWasteAnalyze': 'Encontrar receitas anti-desperdício', 'antiWasteNoMatch': 'Ainda não há uma receita anti-desperdício do catálogo compatível com estes ingredientes.', 'antiWasteMatched': 'Correspondências', 'antiWasteAdditional': 'Também pode precisar de', 'antiWasteCompatibility': 'Compatibilidade', 'antiWasteFound': '{count} sugestões baseadas no catálogo',
       'appName': 'TasteAI', 'inspire': 'Inspire-me', 'search': 'Pesquisar', 'antiWaste': 'Anti-desperdício',
       'favorites': 'Favoritos', 'profile': 'Perfil', 'searchHint': 'Pesquise receitas, ingredientes ou técnicas…',

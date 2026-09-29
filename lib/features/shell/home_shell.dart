@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import '../../app/app_settings_controller.dart';
 import '../../core/l10n/app_strings.dart';
 import '../../data/preferences/app_preferences_store.dart';
+import '../../data/sync/google_drive_backup_service.dart';
+import '../../data/sync/profile_sync_controller.dart';
+import '../../domain/account/google_account_controller.dart';
 import '../../domain/recipe/recipe.dart';
 import '../recipes/anti_waste_screen.dart';
 import '../recipes/favorites_screen.dart';
@@ -28,17 +31,35 @@ class HomeShell extends StatefulWidget {
 
 class _HomeShellState extends State<HomeShell> {
   late final RecipeController _recipeController;
+  late final GoogleAccountController _accountController;
+  late final GoogleDriveBackupService _driveBackupService;
+  late final ProfileSyncController _profileSyncController;
   int _index = 1;
 
   @override
   void initState() {
     super.initState();
-    _recipeController = RecipeController(preferencesStore: widget.preferencesStore);
+    _recipeController =
+        RecipeController(preferencesStore: widget.preferencesStore);
+    _accountController = GoogleAccountController();
+    _driveBackupService = GoogleDriveBackupService(
+      accountController: _accountController,
+    );
+    _profileSyncController = ProfileSyncController(
+      accountController: _accountController,
+      driveBackupService: _driveBackupService,
+      recipeController: _recipeController,
+      settingsController: widget.settingsController,
+    );
     _recipeController.initialize();
+    _accountController.initialize();
   }
 
   @override
   void dispose() {
+    _profileSyncController.dispose();
+    _driveBackupService.dispose();
+    _accountController.dispose();
     _recipeController.dispose();
     super.dispose();
   }
@@ -108,7 +129,11 @@ class _HomeShellState extends State<HomeShell> {
         RecipeSearchScreen(controller: _recipeController, settings: widget.settingsController, onOpenRecipe: _openRecipe),
         AntiWasteScreen(controller: _recipeController, settings: widget.settingsController, onOpenRecipe: _openRecipe),
         FavoritesScreen(controller: _recipeController, settings: widget.settingsController, onOpenRecipe: _openRecipe),
-        ProfileScreen(settings: widget.settingsController, recipeCount: _recipeController.recipes.length),
+        ProfileScreen(
+          settings: widget.settingsController,
+          recipeCount: _recipeController.recipes.length,
+          syncController: _profileSyncController,
+        ),
       ],
     );
   }
