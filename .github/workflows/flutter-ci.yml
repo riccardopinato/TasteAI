@@ -3,7 +3,7 @@ name: TasteAI Flutter CI
 on:
   push:
     branches:
-      - tasteai-flutter-v0.3-recipe-core
+      - 'tasteai-flutter-v*'
   workflow_dispatch:
 
 jobs:
