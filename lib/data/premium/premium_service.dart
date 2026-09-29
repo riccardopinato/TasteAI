@@ -94,7 +94,7 @@ class RevenueCatPremiumService implements PremiumService {
         await rc.Purchases.configure(configuration);
       }
       _initialized = true;
-      return refresh();
+      return await refresh();
     } on PlatformException catch (error) {
       throw PremiumServiceException(
         'configure_${_purchaseErrorCode(error)}',
