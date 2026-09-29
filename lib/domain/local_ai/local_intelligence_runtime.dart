@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'local_ai_models.dart';
 import 'local_intelligence_provider.dart';
 import 'no_model_local_intelligence_provider.dart';
 
