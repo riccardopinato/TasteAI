@@ -4,6 +4,8 @@ import 'package:flutter/foundation.dart';
 
 import '../../data/preferences/app_preferences_store.dart';
 import '../../domain/anti_waste/anti_waste_engine.dart';
+import '../../domain/local_ai/local_ai_models.dart';
+import '../../domain/local_ai/local_intelligence_runtime.dart';
 import '../../domain/recipe/recipe.dart';
 import '../../domain/recipe/recipe_catalog.dart';
 import '../../domain/search/unified_recipe_retrieval_service.dart';
@@ -14,16 +16,20 @@ class RecipeController extends ChangeNotifier {
     Future<RecipeCatalog> Function()? catalogLoader,
     Random? random,
     UnifiedRecipeRetrievalService? retrievalService,
+    LocalIntelligenceRuntime? localIntelligenceRuntime,
   })  : _preferencesStore = preferencesStore,
         _catalogLoader = catalogLoader ?? RecipeCatalog.loadAsset,
         _random = random ?? Random(),
         _retrievalService = retrievalService ??
-            UnifiedRecipeRetrievalService(preferencesStore: preferencesStore);
+            UnifiedRecipeRetrievalService(preferencesStore: preferencesStore),
+        _localIntelligenceRuntime =
+            localIntelligenceRuntime ?? LocalIntelligenceRuntime();
 
   final AppPreferencesStore _preferencesStore;
   final Future<RecipeCatalog> Function() _catalogLoader;
   final Random _random;
   final UnifiedRecipeRetrievalService _retrievalService;
+  final LocalIntelligenceRuntime _localIntelligenceRuntime;
 
   bool _loading = true;
   Object? _error;
@@ -38,6 +44,9 @@ class RecipeController extends ChangeNotifier {
   Recipe? get inspiredRecipe => _inspiredRecipe;
   bool get searchReady => _retrievalService.ready;
   int get indexedTermCount => _retrievalService.indexedTermCount;
+  LocalAiRuntimeStatus get localAiStatus => _localIntelligenceRuntime.status;
+  LocalModelDescriptor get localAiDescriptor => _localIntelligenceRuntime.descriptor;
+  bool get localAiAvailable => _localIntelligenceRuntime.available;
 
   List<Recipe> get favoriteRecipes {
     return _recipes
@@ -75,12 +84,19 @@ class RecipeController extends ChangeNotifier {
         recipes: _recipes,
         catalogVersion: catalog.catalogVersion,
       );
+      await _localIntelligenceRuntime.initialize();
     } catch (error) {
       _error = error;
     } finally {
       _loading = false;
       notifyListeners();
     }
+  }
+
+  @override
+  void dispose() {
+    _localIntelligenceRuntime.dispose();
+    super.dispose();
   }
 
   bool isFavorite(String recipeId) => _favoriteIds.contains(recipeId);
