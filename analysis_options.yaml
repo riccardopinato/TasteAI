@@ -17,5 +17,4 @@ linter:
     - directives_ordering
     - prefer_final_fields
     - prefer_final_locals
-    - sort_constructors_first
     - use_super_parameters
