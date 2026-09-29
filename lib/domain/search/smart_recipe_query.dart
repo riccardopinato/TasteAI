@@ -189,7 +189,7 @@ class SmartRecipeQueryParser {
     final Set<String> requiredTechniques = <String>{};
 
     final RegExp explicitMinutes = RegExp(
-      r'(?:(?:meno di|entro|massimo|max|under|within|less than)\s*)?(\d{1,3})\s*(?:min|minuti|minute|minutes)',
+      r'(?:(?:meno di|entro|massimo|max|under|within|less than)\s*)?(\d{1,3})\s*(?:minuti|minutes|minute|min)',
     );
     final Iterable<RegExpMatch> minuteMatches = explicitMinutes.allMatches(working);
     for (final RegExpMatch match in minuteMatches) {
