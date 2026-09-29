@@ -11,8 +11,9 @@
 - [ ] v0.8B — Needle 3 Native Model Pack & On-device Certification
 - [x] v0.9 — Profile & Google Drive Sync core
 - [ ] v0.9B — Production OAuth credentials & on-device certification
-- [ ] v0.10 — Premium
+- [x] v0.10 — Premium Engine core
+- [ ] v0.10B — RevenueCat/store production configuration & sandbox certification
 - [ ] v0.11 — Release Hardening
 - [ ] v1.0 — Production Release
 
-TasteAI remains fully usable without login, cloud sync or a local AI model.
+TasteAI remains useful offline and without login, Premium or a local model.

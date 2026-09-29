@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../app/app_settings_controller.dart';
 import '../../core/l10n/app_strings.dart';
+import '../../data/premium/premium_controller.dart';
 import '../../data/sync/profile_sync_controller.dart';
 import '../../domain/account/google_account_controller.dart';
 
@@ -11,11 +12,15 @@ class ProfileScreen extends StatelessWidget {
     required this.settings,
     required this.recipeCount,
     required this.syncController,
+    required this.premiumController,
+    required this.onOpenPremium,
   });
 
   final AppSettingsController settings;
   final int recipeCount;
   final ProfileSyncController syncController;
+  final PremiumController premiumController;
+  final VoidCallback onOpenPremium;
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +28,7 @@ class ProfileScreen extends StatelessWidget {
       animation: Listenable.merge(<Listenable>[
         syncController,
         syncController.accountController,
+        premiumController,
         settings,
       ]),
       builder: (BuildContext context, Widget? child) {
@@ -30,6 +36,8 @@ class ProfileScreen extends StatelessWidget {
           settings: settings,
           recipeCount: recipeCount,
           syncController: syncController,
+          premiumController: premiumController,
+          onOpenPremium: onOpenPremium,
         );
       },
     );
@@ -41,11 +49,15 @@ class _ProfileBody extends StatelessWidget {
     required this.settings,
     required this.recipeCount,
     required this.syncController,
+    required this.premiumController,
+    required this.onOpenPremium,
   });
 
   final AppSettingsController settings;
   final int recipeCount;
   final ProfileSyncController syncController;
+  final PremiumController premiumController;
+  final VoidCallback onOpenPremium;
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +97,24 @@ class _ProfileBody extends StatelessWidget {
                 Text(strings.localOnly),
               ],
             ),
+          ),
+        ),
+        const SizedBox(height: 14),
+        Card(
+          child: ListTile(
+            leading: Icon(
+              premiumController.isPlus
+                  ? Icons.verified
+                  : Icons.workspace_premium_outlined,
+            ),
+            title: Text(strings.tasteAiPlus),
+            subtitle: Text(
+              premiumController.isPlus
+                  ? strings.plusActive
+                  : strings.plusProfileBody,
+            ),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: onOpenPremium,
           ),
         ),
         const SizedBox(height: 14),

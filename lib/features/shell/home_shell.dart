@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../app/app_settings_controller.dart';
 import '../../core/l10n/app_strings.dart';
 import '../../data/preferences/app_preferences_store.dart';
+import '../../data/premium/premium_controller.dart';
 import '../../data/sync/google_drive_backup_service.dart';
 import '../../data/sync/profile_sync_controller.dart';
 import '../../domain/account/google_account_controller.dart';
@@ -10,6 +11,7 @@ import '../../domain/recipe/recipe.dart';
 import '../recipes/anti_waste_screen.dart';
 import '../recipes/favorites_screen.dart';
 import '../recipes/inspire_screen.dart';
+import '../recipes/premium_screen.dart';
 import '../recipes/profile_screen.dart';
 import '../recipes/recipe_controller.dart';
 import '../recipes/recipe_widgets.dart';
@@ -31,6 +33,7 @@ class HomeShell extends StatefulWidget {
 
 class _HomeShellState extends State<HomeShell> {
   late final RecipeController _recipeController;
+  late final PremiumController _premiumController;
   late final GoogleAccountController _accountController;
   late final GoogleDriveBackupService _driveBackupService;
   late final ProfileSyncController _profileSyncController;
@@ -41,6 +44,7 @@ class _HomeShellState extends State<HomeShell> {
     super.initState();
     _recipeController =
         RecipeController(preferencesStore: widget.preferencesStore);
+    _premiumController = PremiumController();
     _accountController = GoogleAccountController();
     _driveBackupService = GoogleDriveBackupService(
       accountController: _accountController,
@@ -52,11 +56,13 @@ class _HomeShellState extends State<HomeShell> {
       settingsController: widget.settingsController,
     );
     _recipeController.initialize();
+    _premiumController.initialize();
     _accountController.initialize();
   }
 
   @override
   void dispose() {
+    _premiumController.dispose();
     _profileSyncController.dispose();
     _driveBackupService.dispose();
     _accountController.dispose();
@@ -133,12 +139,28 @@ class _HomeShellState extends State<HomeShell> {
           settings: widget.settingsController,
           recipeCount: _recipeController.recipes.length,
           syncController: _profileSyncController,
+          premiumController: _premiumController,
+          onOpenPremium: _openPremium,
         ),
       ],
     );
   }
 
+  void _openPremium() {
+    Navigator.of(context).push<void>(
+      MaterialPageRoute<void>(
+        builder: (BuildContext context) =>
+            PremiumScreen(controller: _premiumController),
+      ),
+    );
+  }
+
   void _openRecipe(Recipe recipe) {
+    if (recipe.premiumTier == 'premium' &&
+        !_premiumController.isPlus) {
+      _openPremium();
+      return;
+    }
     Navigator.of(context).push<void>(
       MaterialPageRoute<void>(
         builder: (BuildContext context) {
