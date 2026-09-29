@@ -23,6 +23,9 @@ jobs:
       - name: Generate missing platform scaffolds
         run: flutter create . --platforms=android,web --org com.riccardopinato --project-name taste_ai
 
+      - name: Remove generated template test
+        run: rm -f test/widget_test.dart
+
       - name: Dependencies
         run: flutter pub get
 
