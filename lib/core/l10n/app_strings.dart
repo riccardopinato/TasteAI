@@ -59,6 +59,16 @@ class AppStrings {
   String get units => _value('units');
   String get localOnly => _value('localOnly');
   String get antiWasteComing => _value('antiWasteComing');
+  String get antiWasteTitle => _value('antiWasteTitle');
+  String get antiWasteBody => _value('antiWasteBody');
+  String get antiWasteInputHint => _value('antiWasteInputHint');
+  String get antiWasteAnalyze => _value('antiWasteAnalyze');
+  String get antiWasteNoMatch => _value('antiWasteNoMatch');
+  String get antiWasteMatched => _value('antiWasteMatched');
+  String get antiWasteAdditional => _value('antiWasteAdditional');
+  String get antiWasteCompatibility => _value('antiWasteCompatibility');
+  String antiWasteFound(int count) =>
+      _value('antiWasteFound').replaceAll('{count}', '$count');
   String get free => _value('free');
   String get premium => _value('premium');
   String get minutes => _value('minutes');
@@ -90,6 +100,7 @@ class AppStrings {
 
   static const Map<String, Map<String, String>> _translations = <String, Map<String, String>>{
     'en': <String, String>{
+      'antiWasteTitle': 'Cook what you already have', 'antiWasteBody': 'Enter leftovers or ingredients from your fridge. TasteAI only ranks grounded recipes from the local catalog.', 'antiWasteInputHint': 'e.g. stale bread, tomatoes, zucchini peels…', 'antiWasteAnalyze': 'Find zero-waste recipes', 'antiWasteNoMatch': 'No grounded zero-waste recipe matches these ingredients yet.', 'antiWasteMatched': 'Matched', 'antiWasteAdditional': 'You may also need', 'antiWasteCompatibility': 'Compatibility', 'antiWasteFound': '{count} grounded suggestions',
       'appName': 'TasteAI', 'inspire': 'Inspire me', 'search': 'Search', 'antiWaste': 'Zero waste',
       'favorites': 'Favorites', 'profile': 'Profile', 'searchHint': 'Search recipes, ingredients or techniques…',
       'results': 'Results', 'all': 'All', 'filters': 'Filters', 'category': 'Category', 'difficulty': 'Difficulty',
@@ -106,6 +117,7 @@ class AppStrings {
       'category_dessert': 'Dessert', 'category_side': 'Side',
     },
     'it': <String, String>{
+      'antiWasteTitle': 'Cucina quello che hai già', 'antiWasteBody': 'Inserisci avanzi o ingredienti del frigo. TasteAI ordina solo ricette reali presenti nel catalogo locale.', 'antiWasteInputHint': 'es. pane raffermo, pomodori, bucce di zucchina…', 'antiWasteAnalyze': 'Trova ricette anti-spreco', 'antiWasteNoMatch': 'Non ci sono ancora ricette anti-spreco del catalogo compatibili con questi ingredienti.', 'antiWasteMatched': 'Corrispondenze', 'antiWasteAdditional': 'Potrebbero servire anche', 'antiWasteCompatibility': 'Compatibilità', 'antiWasteFound': '{count} suggerimenti basati sul catalogo',
       'appName': 'TasteAI', 'inspire': 'Ispirami', 'search': 'Cerca', 'antiWaste': 'Anti-spreco',
       'favorites': 'Preferiti', 'profile': 'Profilo', 'searchHint': 'Cerca ricette, ingredienti o tecniche…',
       'results': 'Risultati', 'all': 'Tutti', 'filters': 'Filtri', 'category': 'Categoria', 'difficulty': 'Difficoltà',
@@ -122,6 +134,7 @@ class AppStrings {
       'category_dessert': 'Dessert', 'category_side': 'Contorno',
     },
     'es': <String, String>{
+      'antiWasteTitle': 'Cocina lo que ya tienes', 'antiWasteBody': 'Introduce sobras o ingredientes. TasteAI solo ordena recetas reales del catálogo local.', 'antiWasteInputHint': 'p. ej. pan duro, tomates, pieles de calabacín…', 'antiWasteAnalyze': 'Buscar recetas anti-desperdicio', 'antiWasteNoMatch': 'Aún no hay una receta del catálogo compatible con estos ingredientes.', 'antiWasteMatched': 'Coincidencias', 'antiWasteAdditional': 'También puedes necesitar', 'antiWasteCompatibility': 'Compatibilidad', 'antiWasteFound': '{count} sugerencias basadas en el catálogo',
       'appName': 'TasteAI', 'inspire': 'Inspírame', 'search': 'Buscar', 'antiWaste': 'Cero desperdicio',
       'favorites': 'Favoritos', 'profile': 'Perfil', 'searchHint': 'Busca recetas, ingredientes o técnicas…',
       'results': 'Resultados', 'all': 'Todos', 'filters': 'Filtros', 'category': 'Categoría', 'difficulty': 'Dificultad',
@@ -138,6 +151,7 @@ class AppStrings {
       'category_dessert': 'Postre', 'category_side': 'Guarnición',
     },
     'fr': <String, String>{
+      'antiWasteTitle': 'Cuisinez ce que vous avez déjà', 'antiWasteBody': 'Saisissez vos restes ou ingrédients. TasteAI classe uniquement les recettes réelles du catalogue local.', 'antiWasteInputHint': 'ex. pain rassis, tomates, épluchures de courgette…', 'antiWasteAnalyze': 'Trouver des recettes anti-gaspillage', 'antiWasteNoMatch': 'Aucune recette anti-gaspillage du catalogue ne correspond encore à ces ingrédients.', 'antiWasteMatched': 'Correspondances', 'antiWasteAdditional': 'Il peut aussi falloir', 'antiWasteCompatibility': 'Compatibilité', 'antiWasteFound': '{count} suggestions issues du catalogue',
       'appName': 'TasteAI', 'inspire': 'Inspirez-moi', 'search': 'Rechercher', 'antiWaste': 'Anti-gaspillage',
       'favorites': 'Favoris', 'profile': 'Profil', 'searchHint': 'Rechercher recettes, ingrédients ou techniques…',
       'results': 'Résultats', 'all': 'Tous', 'filters': 'Filtres', 'category': 'Catégorie', 'difficulty': 'Difficulté',
@@ -154,6 +168,7 @@ class AppStrings {
       'category_dessert': 'Dessert', 'category_side': 'Accompagnement',
     },
     'pt': <String, String>{
+      'antiWasteTitle': 'Cozinhe o que já tem', 'antiWasteBody': 'Insira sobras ou ingredientes. O TasteAI classifica apenas receitas reais do catálogo local.', 'antiWasteInputHint': 'ex. pão amanhecido, tomates, cascas de curgete…', 'antiWasteAnalyze': 'Encontrar receitas anti-desperdício', 'antiWasteNoMatch': 'Ainda não há uma receita anti-desperdício do catálogo compatível com estes ingredientes.', 'antiWasteMatched': 'Correspondências', 'antiWasteAdditional': 'Também pode precisar de', 'antiWasteCompatibility': 'Compatibilidade', 'antiWasteFound': '{count} sugestões baseadas no catálogo',
       'appName': 'TasteAI', 'inspire': 'Inspire-me', 'search': 'Pesquisar', 'antiWaste': 'Anti-desperdício',
       'favorites': 'Favoritos', 'profile': 'Perfil', 'searchHint': 'Pesquise receitas, ingredientes ou técnicas…',
       'results': 'Resultados', 'all': 'Todas', 'filters': 'Filtros', 'category': 'Categoria', 'difficulty': 'Dificuldade',

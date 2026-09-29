@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/foundation.dart';
 
 import '../../data/preferences/app_preferences_store.dart';
+import '../../domain/anti_waste/anti_waste_engine.dart';
 import '../../domain/recipe/recipe.dart';
 import '../../domain/recipe/recipe_catalog.dart';
 import '../../domain/search/unified_recipe_retrieval_service.dart';
@@ -116,6 +117,18 @@ class RecipeController extends ChangeNotifier {
       requiredDiets: requiredDiets,
       excludedAllergens: excludedAllergens,
       requiredTechniques: requiredTechniques,
+      limit: limit,
+    );
+  }
+
+  List<AntiWasteSuggestion> antiWasteSuggestions({
+    required String input,
+    String languageCode = 'it',
+    int limit = 8,
+  }) {
+    return AntiWasteEngine(retrievalService: _retrievalService).suggest(
+      input: input,
+      languageCode: languageCode,
       limit: limit,
     );
   }

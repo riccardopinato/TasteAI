@@ -4,6 +4,7 @@ import '../../app/app_settings_controller.dart';
 import '../../core/l10n/app_strings.dart';
 import '../../data/preferences/app_preferences_store.dart';
 import '../../domain/recipe/recipe.dart';
+import '../recipes/anti_waste_screen.dart';
 import '../recipes/favorites_screen.dart';
 import '../recipes/inspire_screen.dart';
 import '../recipes/profile_screen.dart';
@@ -105,7 +106,7 @@ class _HomeShellState extends State<HomeShell> {
       children: <Widget>[
         InspireScreen(controller: _recipeController, settings: widget.settingsController, onOpenRecipe: _openRecipe),
         RecipeSearchScreen(controller: _recipeController, settings: widget.settingsController, onOpenRecipe: _openRecipe),
-        const _AntiWastePlaceholder(),
+        AntiWasteScreen(controller: _recipeController, settings: widget.settingsController, onOpenRecipe: _openRecipe),
         FavoritesScreen(controller: _recipeController, settings: widget.settingsController, onOpenRecipe: _openRecipe),
         ProfileScreen(settings: widget.settingsController, recipeCount: _recipeController.recipes.length),
       ],
@@ -129,30 +130,6 @@ class _HomeShellState extends State<HomeShell> {
             },
           );
         },
-      ),
-    );
-  }
-}
-
-class _AntiWastePlaceholder extends StatelessWidget {
-  const _AntiWastePlaceholder();
-
-  @override
-  Widget build(BuildContext context) {
-    final AppStrings strings = AppStrings.of(context);
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(32),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            const Icon(Icons.eco_outlined, size: 54),
-            const SizedBox(height: 14),
-            Text(strings.antiWaste, style: Theme.of(context).textTheme.headlineSmall),
-            const SizedBox(height: 8),
-            Text(strings.antiWasteComing, textAlign: TextAlign.center),
-          ],
-        ),
       ),
     );
   }
