@@ -40,7 +40,7 @@ void main() {
     });
 
     expect(recipe.ingredients.single.nameFor('it'), 'Patate');
-    expect(recipe.ingredients.single.amountText(metricUnits: true, languageCode: 'it'), '200g Patate');
+    expect(recipe.ingredients.single.amountText(metricUnits: true, languageCode: 'it'), '200 g Patate');
     expect(recipe.ingredients.single.amountText(metricUnits: false, languageCode: 'en'), '7 oz Potatoes');
   });
 }
