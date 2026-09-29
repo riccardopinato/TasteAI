@@ -7,10 +7,11 @@
 - [x] v0.5 — Smart Food Retrieval
 - [x] v0.6 — Anti-Waste Engine V2
 - [x] v0.7 — Local Intelligence Runtime
-- [ ] v0.8 — TasteAI Local AI
+- [x] v0.8A — Needle 3 Candidate Adapter & Benchmark Harness
+- [ ] v0.8B — Needle 3 Native Model Pack & On-device Certification
 - [ ] v0.9 — Profile & Sync
 - [ ] v0.10 — Premium
 - [ ] v0.11 — Release Hardening
 - [ ] v1.0 — Production Release
 
-TasteAI remains functional with zero model bytes. The preferred ceiling for any future local model is 50 MB unless a measured quality/size trade-off explicitly justifies otherwise.
+The base app remains fully functional without a local model. Needle 3 will be an optional downloadable capability, not a 35 MB mandatory addition to every install.
