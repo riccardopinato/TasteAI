@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:taste_ai/domain/local_ai/local_ai_models.dart';
 import 'package:taste_ai/domain/local_ai/local_intelligence_runtime.dart';
 import 'package:taste_ai/domain/local_ai/needle/needle3_benchmark.dart';
 import 'package:taste_ai/domain/local_ai/needle/needle3_bridge.dart';
