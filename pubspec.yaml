@@ -1,0 +1,23 @@
+name: taste_ai
+description: TasteAI - local-first smart recipe companion.
+publish_to: "none"
+version: 0.3.0+3
+
+environment:
+  sdk: ">=3.5.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  shared_preferences: ^2.5.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/data/recipes_master.json

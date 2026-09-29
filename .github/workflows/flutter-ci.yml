@@ -1,0 +1,39 @@
+name: TasteAI Flutter CI
+
+on:
+  push:
+    branches:
+      - tasteai-flutter-v0.3-recipe-core
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Generate missing platform scaffolds
+        run: flutter create . --platforms=android,web --org com.riccardopinato --project-name taste_ai
+
+      - name: Dependencies
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Tests
+        run: flutter test
+
+      - name: Build Android ARM64 release
+        run: flutter build apk --release --target-platform android-arm64
+
+      - name: Build Web release
+        run: flutter build web --release
