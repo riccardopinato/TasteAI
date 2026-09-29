@@ -74,7 +74,6 @@ class SmartRecipeQueryParser {
     'i',
     'have',
     'quiero',
-    'con',
     'una',
     'un',
     'une',
