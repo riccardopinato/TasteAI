@@ -78,6 +78,7 @@ class _HomeShellState extends State<HomeShell> {
   }
 
   Widget _body(BuildContext context) {
+    final AppStrings strings = AppStrings.of(context);
     if (_recipeController.loading) {
       return const Center(child: CircularProgressIndicator());
     }
