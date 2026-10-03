@@ -14,7 +14,8 @@
 - [x] v0.10 — Premium Engine core
 - [ ] v0.10B — RevenueCat/store production configuration & sandbox certification
 - [x] v0.11 — Release Hardening
-- [ ] v0.12 — Stable Web Preview + release automation
+- [x] v0.12 — Stable Web Preview + release automation
+- [ ] v0.13 — Final UX / accessibility / performance audit
 - [ ] v1.0 — Production Release
 
-TasteAI remains useful offline and without login, Premium or a local model.
+The remaining blockers are external/native certification, not cloud-AI dependency.
