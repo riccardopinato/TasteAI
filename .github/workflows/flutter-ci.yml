@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - 'tasteai-flutter-v*'
+      - main
   workflow_dispatch:
 
 permissions:

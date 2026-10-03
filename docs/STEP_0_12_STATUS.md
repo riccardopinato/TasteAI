@@ -19,7 +19,7 @@
 
 ## Cleanup
 
-- MainActivity moved to the canonical package path `com/riccardopinato/tasteai`.
+- Android namespace/applicationId/package are normalized to `com.riccardopinato.tasteai`; the source folder keeps Flutter's generated `taste_ai` project path.
 - Version advanced to 0.12.0+12.
 
 ## Remaining external setup
