@@ -13,7 +13,8 @@ TasteAI is a Flutter, local-first recipe companion rebuilt from the original Kot
 - Optional Google Sign-In and private Google Drive app-data backup.
 - RevenueCat-ready TasteAI Plus with real entitlement gating.
 - Optional Local Intelligence Runtime; no LLM weights are bundled in the base app.
-- Android and Web builds in CI.
+- Responsive phone/desktop UI with accessible 48dp interaction targets and large-text resilience.
+- Android APK/AAB, iOS no-codesign build, and Web build validation in CI.
 
 ## AI policy
 
@@ -49,6 +50,8 @@ flutter analyze
 flutter test
 flutter build apk --release --target-platform android-arm64
 flutter build appbundle --release
+# macOS only:
+flutter build ios --release --no-codesign
 flutter build web --release
 ```
 

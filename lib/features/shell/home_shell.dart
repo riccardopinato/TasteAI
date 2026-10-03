@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../app/app_settings_controller.dart';
+import '../../core/design/responsive.dart';
 import '../../core/l10n/app_strings.dart';
 import '../../data/preferences/app_preferences_store.dart';
 import '../../data/premium/premium_controller.dart';
@@ -78,7 +79,8 @@ class _HomeShellState extends State<HomeShell> {
         return AnimatedBuilder(
           animation: widget.settingsController,
           builder: (BuildContext context, Widget? child) {
-            return _buildScaffold(context);          },
+            return _buildScaffold(context);
+          },
         );
       },
     );
@@ -86,30 +88,107 @@ class _HomeShellState extends State<HomeShell> {
 
   Widget _buildScaffold(BuildContext context) {
     final AppStrings strings = AppStrings.of(context);
-    final List<NavigationDestination> destinations = <NavigationDestination>[
-      NavigationDestination(icon: const Icon(Icons.auto_awesome_outlined), selectedIcon: const Icon(Icons.auto_awesome), label: strings.inspire),
-      NavigationDestination(icon: const Icon(Icons.search_outlined), selectedIcon: const Icon(Icons.search), label: strings.search),
-      NavigationDestination(icon: const Icon(Icons.eco_outlined), selectedIcon: const Icon(Icons.eco), label: strings.antiWaste),
-      NavigationDestination(icon: const Icon(Icons.favorite_border), selectedIcon: const Icon(Icons.favorite), label: strings.favorites),
-      NavigationDestination(icon: const Icon(Icons.person_outline), selectedIcon: const Icon(Icons.person), label: strings.profile),
+    final List<_NavigationItem> items = <_NavigationItem>[
+      _NavigationItem(
+        icon: Icons.auto_awesome_outlined,
+        selectedIcon: Icons.auto_awesome,
+        label: strings.inspire,
+      ),
+      _NavigationItem(
+        icon: Icons.search_outlined,
+        selectedIcon: Icons.search,
+        label: strings.search,
+      ),
+      _NavigationItem(
+        icon: Icons.eco_outlined,
+        selectedIcon: Icons.eco,
+        label: strings.antiWaste,
+      ),
+      _NavigationItem(
+        icon: Icons.favorite_border,
+        selectedIcon: Icons.favorite,
+        label: strings.favorites,
+      ),
+      _NavigationItem(
+        icon: Icons.person_outline,
+        selectedIcon: Icons.person,
+        label: strings.profile,
+      ),
     ];
 
-    return Scaffold(
-      appBar: AppBar(title: Text(strings.appName)),
-      body: SafeArea(child: _body(context)),
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _index,
-        destinations: destinations,
-        onDestinationSelected: (int index) => setState(() => _index = index),
-      ),
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        final bool wide = constraints.maxWidth >= 900;
+        final Widget content = SafeArea(
+          child: TasteContentFrame(child: _body(context)),
+        );
+
+        if (wide) {
+          return Scaffold(
+            appBar: AppBar(title: Text(strings.appName)),
+            body: Row(
+              children: <Widget>[
+                SafeArea(
+                  child: NavigationRail(
+                    selectedIndex: _index,
+                    labelType: NavigationRailLabelType.all,
+                    destinations: items
+                        .map(
+                          (_NavigationItem item) =>
+                              NavigationRailDestination(
+                            icon: Icon(item.icon),
+                            selectedIcon: Icon(item.selectedIcon),
+                            label: Text(item.label),
+                          ),
+                        )
+                        .toList(growable: false),
+                    onDestinationSelected: (int index) {
+                      setState(() => _index = index);
+                    },
+                  ),
+                ),
+                const VerticalDivider(width: 1),
+                Expanded(child: content),
+              ],
+            ),
+          );
+        }
+
+        return Scaffold(
+          appBar: AppBar(title: Text(strings.appName)),
+          body: content,
+          bottomNavigationBar: NavigationBar(
+            selectedIndex: _index,
+            destinations: items
+                .map(
+                  (_NavigationItem item) => NavigationDestination(
+                    icon: Icon(item.icon),
+                    selectedIcon: Icon(item.selectedIcon),
+                    label: item.label,
+                  ),
+                )
+                .toList(growable: false),
+            onDestinationSelected: (int index) {
+              setState(() => _index = index);
+            },
+          ),
+        );
+      },
     );
   }
 
   Widget _body(BuildContext context) {
     final AppStrings strings = AppStrings.of(context);
     if (_recipeController.loading) {
-      return const Center(child: CircularProgressIndicator());
+      return Center(
+        child: Semantics(
+          label: strings.loadingRecipes,
+          liveRegion: true,
+          child: const CircularProgressIndicator(),
+        ),
+      );
     }
+
     if (_recipeController.error != null) {
       return Center(
         child: Padding(
@@ -121,7 +200,10 @@ class _HomeShellState extends State<HomeShell> {
               const SizedBox(height: 12),
               Text(strings.catalogError, textAlign: TextAlign.center),
               const SizedBox(height: 12),
-              FilledButton(onPressed: _recipeController.initialize, child: Text(strings.retry)),
+              FilledButton(
+                onPressed: _recipeController.initialize,
+                child: Text(strings.retry),
+              ),
             ],
           ),
         ),
@@ -131,10 +213,26 @@ class _HomeShellState extends State<HomeShell> {
     return IndexedStack(
       index: _index,
       children: <Widget>[
-        InspireScreen(controller: _recipeController, settings: widget.settingsController, onOpenRecipe: _openRecipe),
-        RecipeSearchScreen(controller: _recipeController, settings: widget.settingsController, onOpenRecipe: _openRecipe),
-        AntiWasteScreen(controller: _recipeController, settings: widget.settingsController, onOpenRecipe: _openRecipe),
-        FavoritesScreen(controller: _recipeController, settings: widget.settingsController, onOpenRecipe: _openRecipe),
+        InspireScreen(
+          controller: _recipeController,
+          settings: widget.settingsController,
+          onOpenRecipe: _openRecipe,
+        ),
+        RecipeSearchScreen(
+          controller: _recipeController,
+          settings: widget.settingsController,
+          onOpenRecipe: _openRecipe,
+        ),
+        AntiWasteScreen(
+          controller: _recipeController,
+          settings: widget.settingsController,
+          onOpenRecipe: _openRecipe,
+        ),
+        FavoritesScreen(
+          controller: _recipeController,
+          settings: widget.settingsController,
+          onOpenRecipe: _openRecipe,
+        ),
         ProfileScreen(
           settings: widget.settingsController,
           recipeCount: _recipeController.recipes.length,
@@ -161,6 +259,7 @@ class _HomeShellState extends State<HomeShell> {
       _openPremium();
       return;
     }
+
     Navigator.of(context).push<void>(
       MaterialPageRoute<void>(
         builder: (BuildContext context) {
@@ -169,10 +268,12 @@ class _HomeShellState extends State<HomeShell> {
             builder: (BuildContext context, Widget? child) {
               return RecipeDetailPage(
                 recipe: recipe,
-                languageCode: Localizations.localeOf(context).languageCode,
+                languageCode:
+                    Localizations.localeOf(context).languageCode,
                 metricUnits: widget.settingsController.metricUnits,
                 favorite: _recipeController.isFavorite(recipe.id),
-                onToggleFavorite: () => _recipeController.toggleFavorite(recipe.id),
+                onToggleFavorite: () =>
+                    _recipeController.toggleFavorite(recipe.id),
               );
             },
           );
@@ -180,4 +281,16 @@ class _HomeShellState extends State<HomeShell> {
       ),
     );
   }
+}
+
+class _NavigationItem {
+  const _NavigationItem({
+    required this.icon,
+    required this.selectedIcon,
+    required this.label,
+  });
+
+  final IconData icon;
+  final IconData selectedIcon;
+  final String label;
 }

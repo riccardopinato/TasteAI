@@ -15,29 +15,12 @@ abstract final class TasteTheme {
       surface: TastePalette.cream,
     );
 
-    return ThemeData(
-      useMaterial3: true,
-      colorScheme: scheme.copyWith(
+    return _base(
+      scheme.copyWith(
         primary: TastePalette.sage,
         secondary: TastePalette.apricot,
       ),
-      scaffoldBackgroundColor: scheme.surface,
-      cardTheme: CardThemeData(
-        elevation: 0,
-        margin: EdgeInsets.zero,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      ),
-      inputDecorationTheme: InputDecorationTheme(
-        filled: true,
-        fillColor: scheme.surfaceContainerHighest,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(18),
-          borderSide: BorderSide.none,
-        ),
-      ),
-      chipTheme: ChipThemeData(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-      ),
+      scaffold: scheme.surface,
     );
   }
 
@@ -47,27 +30,66 @@ abstract final class TasteTheme {
       brightness: Brightness.dark,
     );
 
-    return ThemeData(
-      useMaterial3: true,
-      colorScheme: scheme.copyWith(
+    return _base(
+      scheme.copyWith(
         primary: const Color(0xFF9BC5A6),
         secondary: const Color(0xFFFFB98C),
       ),
+      scaffold: scheme.surface,
+    );
+  }
+
+  static ThemeData _base(
+    ColorScheme scheme, {
+    required Color scaffold,
+  }) {
+    return ThemeData(
+      useMaterial3: true,
+      colorScheme: scheme,
+      scaffoldBackgroundColor: scaffold,
+      materialTapTargetSize: MaterialTapTargetSize.padded,
+      visualDensity: VisualDensity.standard,
       cardTheme: CardThemeData(
         elevation: 0,
         margin: EdgeInsets.zero,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: scheme.surfaceContainerHighest,
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(18),
           borderSide: BorderSide.none,
         ),
       ),
       chipTheme: ChipThemeData(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(14),
+        ),
+      ),
+      navigationBarTheme: NavigationBarThemeData(
+        height: 72,
+        indicatorColor: scheme.secondaryContainer,
+        labelBehavior:
+            NavigationDestinationLabelBehavior.alwaysShow,
+      ),
+      navigationRailTheme: NavigationRailThemeData(
+        indicatorColor: scheme.secondaryContainer,
+        useIndicator: true,
+      ),
+      filledButtonTheme: FilledButtonThemeData(
+        style: FilledButton.styleFrom(
+          minimumSize: const Size(48, 48),
+        ),
+      ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          minimumSize: const Size(48, 48),
+        ),
       ),
     );
   }

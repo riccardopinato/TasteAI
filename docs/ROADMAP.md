@@ -15,7 +15,8 @@
 - [ ] v0.10B — RevenueCat/store production configuration & sandbox certification
 - [x] v0.11 — Release Hardening
 - [x] v0.12 — Stable Web Preview + release automation
-- [ ] v0.13 — Final UX / accessibility / performance audit
-- [ ] v1.0 — Production Release
+- [x] v0.13 — Final UX / accessibility / performance audit
+- [ ] v1.0 RC — Merge certified Flutter baseline to main
+- [ ] v1.0 Production — External credentials, native/store certification and signed release
 
-The remaining blockers are external/native certification, not cloud-AI dependency.
+Core product development is complete; the remaining unchecked items require external/native production evidence.

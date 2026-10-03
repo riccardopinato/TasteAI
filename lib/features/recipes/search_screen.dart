@@ -40,7 +40,8 @@ class _RecipeSearchScreenState extends State<RecipeSearchScreen> {
   @override
   Widget build(BuildContext context) {
     final AppStrings strings = AppStrings.of(context);
-    final String languageCode = Localizations.localeOf(context).languageCode;
+    final String languageCode =
+        Localizations.localeOf(context).languageCode;
     final List<RecipeRetrievalHit> hits = widget.controller.searchRecipes(
       query: _query,
       languageCode: languageCode,
@@ -56,13 +57,17 @@ class _RecipeSearchScreenState extends State<RecipeSearchScreen> {
           padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
           child: TextField(
             controller: _queryController,
-            onChanged: (String value) => setState(() => _query = value),
+            onChanged: (String value) {
+              setState(() => _query = value);
+            },
             decoration: InputDecoration(
+              labelText: strings.search,
               hintText: strings.searchHint,
               prefixIcon: const Icon(Icons.search),
               suffixIcon: _query.isEmpty
                   ? null
                   : IconButton(
+                      tooltip: strings.clearSearch,
                       onPressed: () {
                         _queryController.clear();
                         setState(() => _query = '');
@@ -81,7 +86,9 @@ class _RecipeSearchScreenState extends State<RecipeSearchScreen> {
               ChoiceChip(
                 label: Text(strings.all),
                 selected: _category == null,
-                onSelected: (_) => setState(() => _category = null),
+                onSelected: (_) {
+                  setState(() => _category = null);
+                },
               ),
               const SizedBox(width: 8),
               ...widget.controller.categories.expand(
@@ -89,7 +96,9 @@ class _RecipeSearchScreenState extends State<RecipeSearchScreen> {
                   ChoiceChip(
                     label: Text(strings.categoryLabel(category)),
                     selected: _category == category,
-                    onSelected: (_) => setState(() => _category = category),
+                    onSelected: (_) {
+                      setState(() => _category = category);
+                    },
                   ),
                   const SizedBox(width: 8),
                 ],
@@ -101,7 +110,8 @@ class _RecipeSearchScreenState extends State<RecipeSearchScreen> {
           tilePadding: const EdgeInsets.symmetric(horizontal: 20),
           title: Text(strings.filters),
           leading: const Icon(Icons.tune),
-          childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+          childrenPadding:
+              const EdgeInsets.fromLTRB(16, 0, 16, 12),
           children: <Widget>[
             Align(
               alignment: Alignment.centerLeft,
@@ -110,17 +120,23 @@ class _RecipeSearchScreenState extends State<RecipeSearchScreen> {
             const SizedBox(height: 8),
             Wrap(
               spacing: 8,
+              runSpacing: 8,
               children: <Widget>[
                 ChoiceChip(
                   label: Text(strings.all),
                   selected: _difficulty == null,
-                  onSelected: (_) => setState(() => _difficulty = null),
+                  onSelected: (_) {
+                    setState(() => _difficulty = null);
+                  },
                 ),
-                for (final String value in const <String>['easy', 'medium', 'hard'])
+                for (final String value
+                    in const <String>['easy', 'medium', 'hard'])
                   ChoiceChip(
                     label: Text(strings.difficultyLabel(value)),
                     selected: _difficulty == value,
-                    onSelected: (_) => setState(() => _difficulty = value),
+                    onSelected: (_) {
+                      setState(() => _difficulty = value);
+                    },
                   ),
               ],
             ),
@@ -132,17 +148,22 @@ class _RecipeSearchScreenState extends State<RecipeSearchScreen> {
             const SizedBox(height: 8),
             Wrap(
               spacing: 8,
+              runSpacing: 8,
               children: <Widget>[
                 ChoiceChip(
                   label: Text(strings.all),
                   selected: _maxMinutes == null,
-                  onSelected: (_) => setState(() => _maxMinutes = null),
+                  onSelected: (_) {
+                    setState(() => _maxMinutes = null);
+                  },
                 ),
                 for (final int value in const <int>[30, 60, 120])
                   ChoiceChip(
                     label: Text('$value ${strings.minutes}'),
                     selected: _maxMinutes == value,
-                    onSelected: (_) => setState(() => _maxMinutes = value),
+                    onSelected: (_) {
+                      setState(() => _maxMinutes = value);
+                    },
                   ),
               ],
             ),
@@ -150,7 +171,9 @@ class _RecipeSearchScreenState extends State<RecipeSearchScreen> {
               contentPadding: EdgeInsets.zero,
               title: Text(strings.antiWasteOnly),
               value: _antiWasteOnly,
-              onChanged: (bool value) => setState(() => _antiWasteOnly = value),
+              onChanged: (bool value) {
+                setState(() => _antiWasteOnly = value);
+              },
             ),
             Align(
               alignment: Alignment.centerLeft,
@@ -166,9 +189,12 @@ class _RecipeSearchScreenState extends State<RecipeSearchScreen> {
           padding: const EdgeInsets.fromLTRB(20, 4, 20, 8),
           child: Align(
             alignment: Alignment.centerLeft,
-            child: Text(
-              strings.resultCount(hits.length),
-              style: Theme.of(context).textTheme.labelLarge,
+            child: Semantics(
+              liveRegion: true,
+              child: Text(
+                strings.resultCount(hits.length),
+                style: Theme.of(context).textTheme.labelLarge,
+              ),
             ),
           ),
         ),
@@ -177,20 +203,38 @@ class _RecipeSearchScreenState extends State<RecipeSearchScreen> {
               ? Center(
                   child: Padding(
                     padding: const EdgeInsets.all(32),
-                    child: Text(strings.noResults, textAlign: TextAlign.center),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        const Icon(
+                          Icons.search_off_outlined,
+                          size: 48,
+                        ),
+                        const SizedBox(height: 12),
+                        Text(
+                          strings.noResults,
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
                   ),
                 )
               : ListView.separated(
-                  padding: const EdgeInsets.fromLTRB(16, 4, 16, 28),
+                  padding:
+                      const EdgeInsets.fromLTRB(16, 4, 16, 28),
                   itemCount: hits.length,
-                  separatorBuilder: (_, __) => const SizedBox(height: 10),
-                  itemBuilder: (BuildContext context, int index) {
+                  separatorBuilder: (_, __) =>
+                      const SizedBox(height: 10),
+                  itemBuilder:
+                      (BuildContext context, int index) {
                     final Recipe recipe = hits[index].recipe;
                     return RecipeCard(
                       recipe: recipe,
                       languageCode: languageCode,
-                      favorite: widget.controller.isFavorite(recipe.id),
-                      onOpen: () => widget.onOpenRecipe(recipe),
+                      favorite:
+                          widget.controller.isFavorite(recipe.id),
+                      onOpen: () =>
+                          widget.onOpenRecipe(recipe),
                       onToggleFavorite: () =>
                           widget.controller.toggleFavorite(recipe.id),
                     );

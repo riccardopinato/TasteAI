@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - tasteai-flutter-v0.12-web-release
+      - tasteai-flutter-v0.13-final-polish
       - main
   workflow_dispatch:
 
