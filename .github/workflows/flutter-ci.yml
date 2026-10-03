@@ -32,7 +32,7 @@ jobs:
           if [ -d android ]; then
             grep -RIl "com.riccardopinato.taste_ai" android --exclude-dir=.gradle | while read -r file; do
               sed -i 's/com\.riccardopinato\.taste_ai/com.riccardopinato.tasteai/g' "$file"
-            done
+            done || true
           fi
 
       - name: Remove generated template test
