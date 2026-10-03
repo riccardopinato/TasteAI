@@ -1,8 +1,0 @@
-{
-  "name": "Remix: TasteAI 3.0",
-  "description": "Premium gourmet cooking \u0026 anti-waste AI assistant with local smart recipes.",
-  "requestFramePermissions": [],
-  "majorCapabilities": [
-    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
-  ]
-}

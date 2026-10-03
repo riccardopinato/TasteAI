@@ -1,0 +1,561 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "aa5e3890c420e1eb2007aaa942524385aa0c399f",
+  "legacyToCanonical": {
+    "FRITTE_BUCCE_PATATE": {
+      "canonicalId": "FRITTE_BUCCE_PATATE",
+      "slug": "bucce-di-patata-dorate-e-croccanti-al-rosmarino",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes1.kt"
+    },
+    "PESTO_GAMBI_PREZZEMOLO": {
+      "canonicalId": "PESTO_GAMBI_PREZZEMOLO",
+      "slug": "pesto-sostenibile-di-gambi-di-prezzemolo-e-mandorle",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes1.kt"
+    },
+    "MANZO_CBT_ROSA": {
+      "canonicalId": "MANZO_CBT_ROSA",
+      "slug": "controfiletto-di-manzo-cbt-rosato-con-erbe-aromatiche",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes1.kt"
+    },
+    "CRUSTACEAN_OIL_RED": {
+      "canonicalId": "CRUSTACEAN_OIL_RED",
+      "slug": "olio-aromatico-ai-carapaci-e-teste-di-crostacei",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes1.kt"
+    },
+    "CREMA_FOGLIE_BROCCOLO": {
+      "canonicalId": "CREMA_FOGLIE_BROCCOLO",
+      "slug": "crema-vellutata-di-foglie-e-gambi-di-broccolo",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes1.kt"
+    },
+    "ACQUAFABA_MERINGHE_WHITE": {
+      "canonicalId": "ACQUAFABA_MERINGHE_WHITE",
+      "slug": "meringhe-vegane-soffici-di-acquafaba",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes1.kt"
+    },
+    "BUCCE_CAROTE_MARINATE": {
+      "canonicalId": "BUCCE_CAROTE_MARINATE",
+      "slug": "nastri-di-bucce-di-carota-agrodolci",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes1.kt"
+    },
+    "BRODO_BACCELI_PISELLI": {
+      "canonicalId": "BRODO_BACCELI_PISELLI",
+      "slug": "vellutata-di-baccelli-di-piselli-e-menta",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes1.kt"
+    },
+    "GAMBI_CARCIOFI_TRIFOLATI": {
+      "canonicalId": "GAMBI_CARCIOFI_TRIFOLATI",
+      "slug": "gambi-di-carciofo-trifolati-all-aglio-e-mentuccia",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes1.kt"
+    },
+    "ACETO_TORSOLI_MELE": {
+      "canonicalId": "ACETO_TORSOLI_MELE",
+      "slug": "aceto-madre-di-torsoli-e-bucce-di-mela",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes1.kt"
+    },
+    "POLPETTE_LESSO_RECOVERY": {
+      "canonicalId": "POLPETTE_LESSO_RECOVERY",
+      "slug": "polpette-tradizionali-di-manzo-lesso-avanzato",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes1.kt"
+    },
+    "CREMA_PORRI_VERDE": {
+      "canonicalId": "CREMA_PORRI_VERDE",
+      "slug": "crema-smeraldo-di-foglie-verdi-di-porro",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes1.kt"
+    },
+    "RISOTTO_FOGLIE_SEDANO": {
+      "canonicalId": "RISOTTO_FOGLIE_SEDANO",
+      "slug": "risotto-cremoso-all-estratto-di-foglie-di-sedano",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes1.kt"
+    },
+    "FILETTO_MAIALE_CBT_APPLE": {
+      "canonicalId": "FILETTO_MAIALE_CBT_APPLE",
+      "slug": "filetto-di-maiale-cbt-morbidissimo-con-mela-tatin",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes1.kt"
+    },
+    "TORTINO_GAMBI_BIETOLA": {
+      "canonicalId": "TORTINO_GAMBI_BIETOLA",
+      "slug": "sformato-di-gambi-di-bietola-gratinati-al-parmigiano",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes1.kt"
+    },
+    "SHRUB_BUCCE_FRAGOLA": {
+      "canonicalId": "SHRUB_BUCCE_FRAGOLA",
+      "slug": "shrub-sostenibile-di-piccioli-e-bucce-di-fragola",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes1.kt"
+    },
+    "UOVO_CBT_65_PERFECT": {
+      "canonicalId": "UOVO_CBT_65_PERFECT",
+      "slug": "uovo-cbt-perfetto-a-65-gradi-con-crema-di-zucca",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes1.kt"
+    },
+    "O_FOGLIE_FICO_AROMATIC": {
+      "canonicalId": "O_FOGLIE_FICO_AROMATIC",
+      "slug": "olio-aromatico-alle-foglie-di-fico-fresche",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes1.kt"
+    },
+    "SALSA_BUCCE_ASPARAGI": {
+      "canonicalId": "SALSA_BUCCE_ASPARAGI",
+      "slug": "coulis-cremoso-di-bucce-di-asparagi-bianchi",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes1.kt"
+    },
+    "TEMPURA_FOGLIE_SALVIA": {
+      "canonicalId": "TEMPURA_FOGLIE_SALVIA",
+      "slug": "tempura-di-foglie-di-salvia-e-gambi-di-sedano",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes1.kt"
+    },
+    "MARMELLATA_ALBEDO": {
+      "canonicalId": "MARMELLATA_ALBEDO",
+      "slug": "confettura-upcycled-di-albedo-e-scorze-di-agrumi",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes1.kt"
+    },
+    "SHRUB_BUCCE_CETRIOLO": {
+      "canonicalId": "SHRUB_BUCCE_CETRIOLO",
+      "slug": "insalata-rinfrescante-con-condimento-alle-bucce-di-cetriolo",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes1.kt"
+    },
+    "CHIPS_BUCCE_PASTINACA": {
+      "canonicalId": "CHIPS_BUCCE_PASTINACA",
+      "slug": "chips-croccanti-di-bucce-di-pastinaca-al-sale-nero",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes2.kt"
+    },
+    "BRODO_BACCELLI_FAVE": {
+      "canonicalId": "BRODO_BACCELLI_FAVE",
+      "slug": "vellutata-crema-di-baccelli-di-fave-e-pecorino",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes2.kt"
+    },
+    "INFUSO_ZENZERO_SCARTO": {
+      "canonicalId": "INFUSO_ZENZERO_SCARTO",
+      "slug": "te-caldo-di-bucce-di-zenzero-e-scorze-di-limone",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes2.kt"
+    },
+    "POLPETTE_OKARA_SOIA": {
+      "canonicalId": "POLPETTE_OKARA_SOIA",
+      "slug": "polpettine-vegane-dorate-di-okara-di-soia",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes2.kt"
+    },
+    "BRODO_FUNGHI_GAMBI": {
+      "canonicalId": "BRODO_FUNGHI_GAMBI",
+      "slug": "consomme-di-gambi-di-funghi-champignon",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes2.kt"
+    },
+    "BUCCE_PESCHE_SCIROPPATE": {
+      "canonicalId": "BUCCE_PESCHE_SCIROPPATE",
+      "slug": "scorzette-candite-di-bucce-di-pesca-allo-sciroppo",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes2.kt"
+    },
+    "CRUST_PANE_PIZZA_GARLIC": {
+      "canonicalId": "CRUST_PANE_PIZZA_GARLIC",
+      "slug": "crumble-saporito-di-croste-di-pizza-e-aglio",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes2.kt"
+    },
+    "GELATINA_TORSOLI_MELE": {
+      "canonicalId": "GELATINA_TORSOLI_MELE",
+      "slug": "gelatina-naturale-di-torsoli-e-bucce-di-mela",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes2.kt"
+    },
+    "TEMPURA_BUCCE_DAIKON": {
+      "canonicalId": "TEMPURA_BUCCE_DAIKON",
+      "slug": "tempura-di-bucce-di-daikon-croccanti",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes2.kt"
+    },
+    "CREMA_ZUCCHINE_ESTREME": {
+      "canonicalId": "CREMA_ZUCCHINE_ESTREME",
+      "slug": "crema-vellutata-di-zucchine-grandi-estive",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes2.kt"
+    },
+    "PESTO_FINOCCHI_FOGLIE": {
+      "canonicalId": "PESTO_FINOCCHI_FOGLIE",
+      "slug": "pesto-di-ciuffi-verdi-di-finocchio-e-noci",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes2.kt"
+    },
+    "FOCACCIA_ORZO_BIRRA_RECOVERY": {
+      "canonicalId": "FOCACCIA_ORZO_BIRRA_RECOVERY",
+      "slug": "focaccia-rustica-alle-trebbie-di-birra-e-rosmarino",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes2.kt"
+    },
+    "PATE_GAMBI_FUNGHI_CREAMY": {
+      "canonicalId": "PATE_GAMBI_FUNGHI_CREAMY",
+      "slug": "pate-cremoso-di-gambi-di-funghi-e-noci",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes2.kt"
+    },
+    "CROCCHETTE_PANE_AVANZATO_HERBS": {
+      "canonicalId": "CROCCHETTE_PANE_AVANZATO_HERBS",
+      "slug": "crocchette-rustiche-di-pane-raffermo-all-origano",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes2.kt"
+    },
+    "SQUACQUERONE_RECOVERY_CHEESE": {
+      "canonicalId": "SQUACQUERONE_RECOVERY_CHEESE",
+      "slug": "formaggio-fresco-di-ricotta-da-latte-residuo",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes2.kt"
+    },
+    "MAIONESE_OLIO_LATTA_CREAM": {
+      "canonicalId": "MAIONESE_OLIO_LATTA_CREAM",
+      "slug": "maionese-cremosa-upcycled-all-olio-di-conserve",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes2.kt"
+    },
+    "CRISP_FOGLIE_SEDANO_OVEN": {
+      "canonicalId": "CRISP_FOGLIE_SEDANO_OVEN",
+      "slug": "briciole-dorate-di-foglie-di-sedano-al-forno",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes2.kt"
+    },
+    "SALSA_VERDE_BUCCE_CETRIOLO_COOL": {
+      "canonicalId": "SALSA_VERDE_BUCCE_CETRIOLO_COOL",
+      "slug": "salsa-verde-rinfrescante-con-bucce-di-cetriolo",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes2.kt"
+    },
+    "TORTA_BUCCE_BANANA_SWEET": {
+      "canonicalId": "TORTA_BUCCE_BANANA_SWEET",
+      "slug": "torta-soffice-spugna-alle-bucce-di-banana-frullate",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes2.kt"
+    },
+    "CODA_ALLA_VACCINARA_CBT_SLOW": {
+      "canonicalId": "CODA_ALLA_VACCINARA_CBT_SLOW",
+      "slug": "coda-alla-vaccinara-cbt-morbidissima-a-bassa-temperatura",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes2.kt"
+    },
+    "BOLLITO_RIFATTO_ONION_MED": {
+      "canonicalId": "BOLLITO_RIFATTO_ONION_MED",
+      "slug": "bollito-rifatto-alla-toscana-con-cipolle-dolci",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes2.kt"
+    },
+    "TEMPURA_BUCCE_CAROTA_CRISP": {
+      "canonicalId": "TEMPURA_BUCCE_CAROTA_CRISP",
+      "slug": "tempura-croccante-di-nastri-di-bucce-di-carota",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes3.kt"
+    },
+    "CREMA_GAMBI_BIETOLE_VELVET": {
+      "canonicalId": "CREMA_GAMBI_BIETOLE_VELVET",
+      "slug": "zuppa-vellutata-di-gambi-di-bietola-e-aglio-dolce",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes3.kt"
+    },
+    "ZUPPA_CIPOLLA_SCARTI_DEEP": {
+      "canonicalId": "ZUPPA_CIPOLLA_SCARTI_DEEP",
+      "slug": "zuppa-di-cipolle-con-brodo-di-bucce-dorate",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes3.kt"
+    },
+    "CARCIOFI_CBT_MINT": {
+      "canonicalId": "CARCIOFI_CBT_MINT",
+      "slug": "carciofi-cbt-morbidissimi-alla-romana-con-mentuccia",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes3.kt"
+    },
+    "TORTA_PANE_CACAO_SWEET": {
+      "canonicalId": "TORTA_PANE_CACAO_SWEET",
+      "slug": "torta-di-pane-raffermo-cacao-e-pinoli-della-nonna",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes3.kt"
+    },
+    "BRODO_PARMIGIANO_EXTRA_SAVORY": {
+      "canonicalId": "BRODO_PARMIGIANO_EXTRA_SAVORY",
+      "slug": "brodo-dorato-intenso-di-croste-di-parmigiano-reggiano",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes3.kt"
+    },
+    "GNOCCHI_PANE_RECOVERY_SIMPLE": {
+      "canonicalId": "GNOCCHI_PANE_RECOVERY_SIMPLE",
+      "slug": "gnocchetti-soffici-di-pane-raffermo-al-burro-e-salvia",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes3.kt"
+    },
+    "CHIPS_ZUCCA_BUCCIA_CRISP": {
+      "canonicalId": "CHIPS_ZUCCA_BUCCIA_CRISP",
+      "slug": "bucce-di-zucca-croccanti-al-forno-con-paprika",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes3.kt"
+    },
+    "DASHI_FUNGHI_SCARTI_UMAMI": {
+      "canonicalId": "DASHI_FUNGHI_SCARTI_UMAMI",
+      "slug": "dashi-di-recupero-con-gambi-di-shiitake-e-kombu",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes3.kt"
+    },
+    "HUMMUS_CECI_AQUAFABA_SILK": {
+      "canonicalId": "HUMMUS_CECI_AQUAFABA_SILK",
+      "slug": "hummus-soffice-frullato-con-aquafaba-di-recupero",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes3.kt"
+    },
+    "POLLO_CBT_ROSMARINO_JUICY": {
+      "canonicalId": "POLLO_CBT_ROSMARINO_JUICY",
+      "slug": "petto-di-pollo-cbt-succoso-al-limone-e-rosmarino",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes3.kt"
+    },
+    "PESTO_FOGLIE_RAVANELLO_GREEN_EXTRA": {
+      "canonicalId": "PESTO_FOGLIE_RAVANELLO_GREEN_EXTRA",
+      "slug": "pesto-sostenibile-di-foglie-di-ravanello-e-pecorino",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes3.kt"
+    },
+    "BUCCE_MELA_ESSICCATE_SNACK": {
+      "canonicalId": "BUCCE_MELA_ESSICCATE_SNACK",
+      "slug": "bucce-di-mela-essiccate-croccanti-alla-cannella",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes3.kt"
+    },
+    "ZUPPA_PESCE_POVERO_CBT_DEEP": {
+      "canonicalId": "ZUPPA_PESCE_POVERO_CBT_DEEP",
+      "slug": "trancio-di-pesce-azzurro-cbt-con-brodo-di-lische",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes3.kt"
+    },
+    "FINOCCHI_CBT_GRATIN_SWEET": {
+      "canonicalId": "FINOCCHI_CBT_GRATIN_SWEET",
+      "slug": "finocchi-cbt-e-gratinati-alle-erbe-saporite",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes3.kt"
+    },
+    "CROSTINI_FEGATO_TOSCANO_RICH": {
+      "canonicalId": "CROSTINI_FEGATO_TOSCANO_RICH",
+      "slug": "crostini-tradizionali-di-fegatini-di-pollo-sostenibili",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes3.kt"
+    },
+    "SALMONE_CBT_PRECISION_LOW": {
+      "canonicalId": "SALMONE_CBT_PRECISION_LOW",
+      "slug": "filetto-di-salmone-cbt-vetroso-a-42-gradi",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes3.kt"
+    },
+    "BUCCE_ARANCE_CANDITE_CHOCOLATE": {
+      "canonicalId": "BUCCE_ARANCE_CANDITE_CHOCOLATE",
+      "slug": "bucce-d-arancia-candite-ricoperte-di-cioccolato",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes3.kt"
+    },
+    "BRODO_SEDANO_VERDE_BUIL": {
+      "canonicalId": "BRODO_SEDANO_VERDE_BUIL",
+      "slug": "consomme-di-scarti-di-erbe-e-foglie-di-sedano",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes3.kt"
+    },
+    "POLPETTE_FIBRE_CENTRIFUGA_VEG": {
+      "canonicalId": "POLPETTE_FIBRE_CENTRIFUGA_VEG",
+      "slug": "polpettine-vegane-con-fibre-di-centrifuga-avanzate",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes3.kt"
+    },
+    "MOUSSE_CIOCCOLATO_AQUAFABA_FAST": {
+      "canonicalId": "MOUSSE_CIOCCOLATO_AQUAFABA_FAST",
+      "slug": "meringa-mousse-al-cioccolato-e-acquafaba",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes3.kt"
+    },
+    "SALE_AGRUMATO_DRIED_SCRAP": {
+      "canonicalId": "SALE_AGRUMATO_DRIED_SCRAP",
+      "slug": "sale-aromatico-gourmet-con-scorze-essiccate-di-limone",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes3.kt"
+    },
+    "GNOCCHI_BUCCE_PATATE_TARTUFO": {
+      "canonicalId": "GNOCCHI_BUCCE_PATATE_TARTUFO",
+      "slug": "gnocchi-soffici-di-bucce-di-patate-al-tartufo-e-salvia",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes4.kt"
+    },
+    "RISOTTO_BUCCE_ASPARAGI_GORGONZOLA": {
+      "canonicalId": "RISOTTO_BUCCE_ASPARAGI_GORGONZOLA",
+      "slug": "risotto-carnaroli-con-estratto-di-bucce-di-asparagi-e-gorgonzola",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes4.kt"
+    },
+    "POLPO_CBT_ACQUA_SUA": {
+      "canonicalId": "POLPO_CBT_ACQUA_SUA",
+      "slug": "polpo-cbt-morbidissimo-cotto-nella-sua-stessa-acqua",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes4.kt"
+    },
+    "GUANCIA_MANZO_CBT_VINO_RED": {
+      "canonicalId": "GUANCIA_MANZO_CBT_VINO_RED",
+      "slug": "guancia-di-manzo-cbt-brasata-al-vino-rosso-e-cioccolato",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes4.kt"
+    },
+    "RAVIOLI_PANE_RAFFERMO_RICOTTA": {
+      "canonicalId": "RAVIOLI_PANE_RAFFERMO_RICOTTA",
+      "slug": "ravioli-rustici-di-croste-di-pane-con-ripieno-di-ricotta-e-limone",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes4.kt"
+    },
+    "SFORMATO_FOGLIE_FINOCCHIO_PARM": {
+      "canonicalId": "SFORMATO_FOGLIE_FINOCCHIO_PARM",
+      "slug": "sformatino-green-di-foglie-di-finocchio-ed-erbe-aromatiche",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes4.kt"
+    },
+    "TRIGLIE_CBT_LIMONE_CANDITO": {
+      "canonicalId": "TRIGLIE_CBT_LIMONE_CANDITO",
+      "slug": "triglie-cbt-profumate-all-olio-d-oliva-e-scorze-di-limone",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes4.kt"
+    },
+    "TORTINO_ALBEDO_AGRUMI_SWEET": {
+      "canonicalId": "TORTINO_ALBEDO_AGRUMI_SWEET",
+      "slug": "torta-soffice-di-albedo-di-arancia-e-carote-senza-sprechi",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes4.kt"
+    },
+    "ZUPPA_GAMBI_CARCIOFI_NOBLE": {
+      "canonicalId": "ZUPPA_GAMBI_CARCIOFI_NOBLE",
+      "slug": "vellutata-di-gambi-di-carciofo-e-patate-al-timo-selvatico",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes4.kt"
+    },
+    "FOCACCINA_PANE_RECOVERY_YEST": {
+      "canonicalId": "FOCACCINA_PANE_RECOVERY_YEST",
+      "slug": "focaccine-soffici-da-esubero-di-lievito-e-pane-raffermo",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes4.kt"
+    },
+    "CREMA_GAMBI_CIME_RAPA": {
+      "canonicalId": "CREMA_GAMBI_CIME_RAPA",
+      "slug": "vellutata-saporita-di-gambi-di-cime-di-rapa-e-mandorle",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes5.kt"
+    },
+    "BACCALA_CBT_CECI_ROSMARINO": {
+      "canonicalId": "BACCALA_CBT_CECI_ROSMARINO",
+      "slug": "trancio-di-baccala-cbt-su-crema-di-ceci-al-rosmarino",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes5.kt"
+    },
+    "RISOTTO_BUCCE_ZUCCA_AMARETTI": {
+      "canonicalId": "RISOTTO_BUCCE_ZUCCA_AMARETTI",
+      "slug": "risotto-con-bucce-di-zucca-arrostite-e-amaretti-sbriciolati",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes5.kt"
+    },
+    "FILETTO_MANZO_CBT_ERBE": {
+      "canonicalId": "FILETTO_MANZO_CBT_ERBE",
+      "slug": "filetto-di-manzo-cbt-ai-tre-pepi-ed-erbe-aromatiche",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes5.kt"
+    },
+    "PESTO_FOGLIE_SEDANO_RUSTICO": {
+      "canonicalId": "PESTO_FOGLIE_SEDANO_RUSTICO",
+      "slug": "pesto-sostenibile-di-foglie-di-sedano-e-noci",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes5.kt"
+    },
+    "SPAGHETTI_CHITARRA_GAMBERI_COLD": {
+      "canonicalId": "SPAGHETTI_CHITARRA_GAMBERI_COLD",
+      "slug": "spaghetti-con-bisque-concentrata-di-carapaci-e-gamberi",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes5.kt"
+    },
+    "POLPETTE_PANE_AGLIONE": {
+      "canonicalId": "POLPETTE_PANE_AGLIONE",
+      "slug": "polpettine-vegane-di-pane-al-sugo-all-aglione",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes5.kt"
+    },
+    "CODA_ROPO_CBT_DEEP": {
+      "canonicalId": "CODA_ROPO_CBT_DEEP",
+      "slug": "coda-di-rospo-cbt-marinata-allo-zafferano-e-finocchietto",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes5.kt"
+    },
+    "CRUMBLE_BUCCE_PERE_ZING": {
+      "canonicalId": "CRUMBLE_BUCCE_PERE_ZING",
+      "slug": "crumble-caldo-di-bucce-di-pere-e-cioccolato",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes5.kt"
+    },
+    "INFUSO_AGRUMI_ZENZERO_REMEDY": {
+      "canonicalId": "INFUSO_AGRUMI_ZENZERO_REMEDY",
+      "slug": "infuso-rigenerante-di-scorze-di-agrumi-e-zenzero",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes5.kt"
+    },
+    "CHIPS_BUCCE_MELANZANE_SPICY": {
+      "canonicalId": "CHIPS_BUCCE_MELANZANE_SPICY",
+      "slug": "chips-di-bucce-di-melanzana-croccanti-alla-paprika-dolce-e-origano",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes6.kt"
+    },
+    "FRITTATINA_PASTA_RECOVERY_PECORINO": {
+      "canonicalId": "FRITTATINA_PASTA_RECOVERY_PECORINO",
+      "slug": "frittatina-napoletana-di-spaghettini-avanzati-e-croste-di-pecorino",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes6.kt"
+    },
+    "GUANCIA_MAIALE_CBT_MANDARINO": {
+      "canonicalId": "GUANCIA_MAIALE_CBT_MANDARINO",
+      "slug": "guancia-di-maiale-cbt-glassata-al-miele-e-scorze-di-mandarino",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes6.kt"
+    },
+    "RICCIOLA_CBT_PESTO_FINOCCHIETTO": {
+      "canonicalId": "RICCIOLA_CBT_PESTO_FINOCCHIETTO",
+      "slug": "filetto-di-ricciola-cbt-all-olio-di-finocchietto-selvatico-e-baccelli",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes6.kt"
+    },
+    "HUMMUS_GAMBI_CAVOLFIORE_ROASTED": {
+      "canonicalId": "HUMMUS_GAMBI_CAVOLFIORE_ROASTED",
+      "slug": "hummus-sostenibile-di-gambi-di-cavolfiore-e-pepe-di-sichuan",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes6.kt"
+    },
+    "RISOTTO_TORSOLO_VERZA_TALEGGIO": {
+      "canonicalId": "RISOTTO_TORSOLO_VERZA_TALEGGIO",
+      "slug": "risotto-carnaroli-con-brodo-di-torsolo-di-verza-e-crema-di-taleggio",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes6.kt"
+    },
+    "POLPETTE_OKARA_MANDORLE_CURRY": {
+      "canonicalId": "POLPETTE_OKARA_MANDORLE_CURRY",
+      "slug": "polpettine-speziate-di-okara-di-mandorla-e-bucce-di-carota",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes6.kt"
+    },
+    "PESTO_FOGLIE_RAVANELLO_PECORINO": {
+      "canonicalId": "PESTO_FOGLIE_RAVANELLO_PECORINO",
+      "slug": "pesto-vivace-di-foglie-di-ravanello-e-mandorle-tostate",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes6.kt"
+    },
+    "TARTE_TATIN_BUCCE_MELA_CARAMEL": {
+      "canonicalId": "TARTE_TATIN_BUCCE_MELA_CARAMEL",
+      "slug": "mini-tarte-tatin-con-bucce-di-mela-caramellate-e-zenzero",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes6.kt"
+    },
+    "MERINGHE_AQUAFABA_FAGIOLI_COCOA": {
+      "canonicalId": "MERINGHE_AQUAFABA_FAGIOLI_COCOA",
+      "slug": "meringhe-soffici-di-aquafaba-di-cannellini-al-cacao-e-vaniglia",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes6.kt"
+    },
+    "APERITIVO_JACKO": {
+      "canonicalId": "APERITIVO_JACKO",
+      "slug": "aperitivo-jack-o",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes7.kt"
+    },
+    "MOJITO_SPIRITATO": {
+      "canonicalId": "MOJITO_SPIRITATO",
+      "slug": "mojito-spiritato",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes7.kt"
+    },
+    "MARRONS_LARD": {
+      "canonicalId": "MARRONS_LARD",
+      "slug": "marrons-glaces-avvolti-nel-lardo",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes7.kt"
+    },
+    "QUICHE_BOSCO": {
+      "canonicalId": "QUICHE_BOSCO",
+      "slug": "quiche-ai-profumi-del-bosco-incantato",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes7.kt"
+    },
+    "FRITTELLE_CAVOLFIORE": {
+      "canonicalId": "FRITTELLE_CAVOLFIORE",
+      "slug": "frittelle-di-cavolfiore-indemoniate-con-salsa-velenosa",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes7.kt"
+    },
+    "TRIONFO_ZUCCA": {
+      "canonicalId": "TRIONFO_ZUCCA",
+      "slug": "trionfo-di-vialone-nano-alla-zucca",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes7.kt"
+    },
+    "ZUPPA_STREGA": {
+      "canonicalId": "ZUPPA_STREGA",
+      "slug": "zuppa-della-strega-coperta-con-sfoglia-di-ragnatela",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes7.kt"
+    },
+    "ARROSTO_ORCO": {
+      "canonicalId": "ARROSTO_ORCO",
+      "slug": "arrosto-dell-orco",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes7.kt"
+    },
+    "STRACCETTI_FATATA": {
+      "canonicalId": "STRACCETTI_FATATA",
+      "slug": "straccetti-alla-pozione-fatata-con-patate-hocus-pocus",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes7.kt"
+    },
+    "QUADROTTI_ZUCCA": {
+      "canonicalId": "QUADROTTI_ZUCCA",
+      "slug": "quadrotti-di-jack-o-lantern",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes7.kt"
+    },
+    "RISOTTO_ZUCCHINE_BRIE": {
+      "canonicalId": "RISOTTO_ZUCCHINE_BRIE",
+      "slug": "risotto-con-zucchine-e-brie",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes7.kt"
+    },
+    "RISOTTO_RADICCHIO_ASIAGO": {
+      "canonicalId": "RISOTTO_RADICCHIO_ASIAGO",
+      "slug": "risotto-al-radicchio-rosso-mantecato-con-asiago",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes7.kt"
+    },
+    "LASAGNETTE_CARCIOFI": {
+      "canonicalId": "LASAGNETTE_CARCIOFI",
+      "slug": "lasagnette-ai-carciofi-e-pecorino-romano",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes7.kt"
+    },
+    "GAMBERI_BUZARA": {
+      "canonicalId": "GAMBERI_BUZARA",
+      "slug": "code-di-gambero-alla-buzara",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes7.kt"
+    },
+    "SPATZLE_ASIAGO": {
+      "canonicalId": "SPATZLE_ASIAGO",
+      "slug": "spatzle-con-fonduta-di-asiago-e-speck",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes7.kt"
+    },
+    "CARBONARA_ZUCCHINE": {
+      "canonicalId": "CARBONARA_ZUCCHINE",
+      "slug": "carbonara-di-zucchine",
+      "sourceFile": "app/src/main/java/com/example/data/repository/AdditionalRecipes7.kt"
+    }
+  }
+}

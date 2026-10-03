@@ -1,0 +1,82 @@
+name: TasteAI Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  android-release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      KEYSTORE_B64: ${{ secrets.TASTEAI_ANDROID_KEYSTORE_B64 }}
+      KEYSTORE_PASSWORD: ${{ secrets.TASTEAI_ANDROID_KEYSTORE_PASSWORD }}
+      KEY_PASSWORD: ${{ secrets.TASTEAI_ANDROID_KEY_PASSWORD }}
+      KEY_ALIAS: ${{ secrets.TASTEAI_ANDROID_KEY_ALIAS }}
+      GOOGLE_CLIENT_ID: ${{ secrets.TASTEAI_GOOGLE_CLIENT_ID }}
+      GOOGLE_SERVER_CLIENT_ID: ${{ secrets.TASTEAI_GOOGLE_SERVER_CLIENT_ID }}
+      REVENUECAT_API_KEY: ${{ secrets.TASTEAI_REVENUECAT_API_KEY }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Validate production signing
+        shell: bash
+        run: |
+          test -n "$KEYSTORE_B64" || { echo "Missing TASTEAI_ANDROID_KEYSTORE_B64"; exit 1; }
+          test -n "$KEYSTORE_PASSWORD" || { echo "Missing TASTEAI_ANDROID_KEYSTORE_PASSWORD"; exit 1; }
+          test -n "$KEY_PASSWORD" || { echo "Missing TASTEAI_ANDROID_KEY_PASSWORD"; exit 1; }
+          test -n "$KEY_ALIAS" || { echo "Missing TASTEAI_ANDROID_KEY_ALIAS"; exit 1; }
+
+      - name: Configure Android signing
+        shell: bash
+        run: |
+          echo "$KEYSTORE_B64" | base64 --decode > android/app/tasteai-upload.jks
+          cat > android/key.properties <<EOF
+          storePassword=$KEYSTORE_PASSWORD
+          keyPassword=$KEY_PASSWORD
+          keyAlias=$KEY_ALIAS
+          storeFile=tasteai-upload.jks
+          EOF
+
+      - name: Dependencies
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Tests
+        run: flutter test
+
+      - name: Build signed APK
+        run: >
+          flutter build apk --release --target-platform android-arm64
+          --dart-define=TASTEAI_GOOGLE_CLIENT_ID="$GOOGLE_CLIENT_ID"
+          --dart-define=TASTEAI_GOOGLE_SERVER_CLIENT_ID="$GOOGLE_SERVER_CLIENT_ID"
+          --dart-define=TASTEAI_REVENUECAT_API_KEY="$REVENUECAT_API_KEY"
+          --dart-define=TASTEAI_REVENUECAT_ENTITLEMENT=plus
+
+      - name: Build signed AAB
+        run: >
+          flutter build appbundle --release
+          --dart-define=TASTEAI_GOOGLE_CLIENT_ID="$GOOGLE_CLIENT_ID"
+          --dart-define=TASTEAI_GOOGLE_SERVER_CLIENT_ID="$GOOGLE_SERVER_CLIENT_ID"
+          --dart-define=TASTEAI_REVENUECAT_API_KEY="$REVENUECAT_API_KEY"
+          --dart-define=TASTEAI_REVENUECAT_ENTITLEMENT=plus
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          gh release create "$GITHUB_REF_NAME"             build/app/outputs/flutter-apk/app-release.apk             build/app/outputs/bundle/release/app-release.aab             --repo "$GITHUB_REPOSITORY"             --generate-notes             --title "TasteAI $GITHUB_REF_NAME"
