@@ -274,6 +274,11 @@ class _HomeShellState extends State<HomeShell> {
                 favorite: _recipeController.isFavorite(recipe.id),
                 onToggleFavorite: () =>
                     _recipeController.toggleFavorite(recipe.id),
+                related: _recipeController.relatedRecipes(
+                  recipe,
+                  includePremium: _premiumController.isPlus,
+                ),
+                onOpenRelated: _openRecipe,
               );
             },
           );
