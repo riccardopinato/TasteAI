@@ -264,7 +264,7 @@ class _HomeShellState extends State<HomeShell> {
       MaterialPageRoute<void>(
         builder: (BuildContext context) {
           return AnimatedBuilder(
-            animation: _recipeController,
+            animation: Listenable.merge([_recipeController, _premiumController]),
             builder: (BuildContext context, Widget? child) {
               return RecipeDetailPage(
                 recipe: recipe,
@@ -274,6 +274,11 @@ class _HomeShellState extends State<HomeShell> {
                 favorite: _recipeController.isFavorite(recipe.id),
                 onToggleFavorite: () =>
                     _recipeController.toggleFavorite(recipe.id),
+                related: _recipeController.relatedRecipes(
+                  recipe,
+                  includePremium: _premiumController.isPlus,
+                ),
+                onOpenRelated: _openRecipe,
               );
             },
           );
