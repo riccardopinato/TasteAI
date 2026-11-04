@@ -1,0 +1,11 @@
+{
+  "name": "TasteAI",
+  "short_name": "TasteAI",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#FFF9F3",
+  "theme_color": "#6F8F78",
+  "description": "Local-first smart recipe companion.",
+  "orientation": "portrait-primary",
+  "prefer_related_applications": false
+}
