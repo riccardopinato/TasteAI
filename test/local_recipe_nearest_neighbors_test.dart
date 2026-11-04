@@ -37,6 +37,7 @@ void main() {
       antiWaste: const AntiWasteInfo(enabled: false),
       premiumTier: premiumTier,
       status: status,
+      allergens: allergens,
     );
   }
 
