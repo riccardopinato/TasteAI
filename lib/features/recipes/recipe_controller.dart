@@ -8,6 +8,7 @@ import '../../domain/local_ai/local_ai_models.dart';
 import '../../domain/local_ai/local_intelligence_runtime.dart';
 import '../../domain/recipe/recipe.dart';
 import '../../domain/recipe/recipe_catalog.dart';
+import '../../domain/search/local_recipe_nearest_neighbors.dart';
 import '../../domain/search/unified_recipe_retrieval_service.dart';
 
 class RecipeController extends ChangeNotifier {
@@ -145,6 +146,21 @@ class RecipeController extends ChangeNotifier {
       limit: limit,
     );
   }
+
+  /// Source-grounded P2 similarity, no persistent preference/model or writes.
+  List<RelatedRecipeHit> relatedRecipes(
+    Recipe reference, {
+    bool includePremium = false,
+    int limit = 3,
+    Set<String> excludedAllergens = const {},
+  }) =>
+      LocalRecipeNearestNeighbors.nearest(
+        reference: reference,
+        available: _recipes,
+        includePremium: includePremium,
+        excludedAllergens: excludedAllergens,
+        limit: limit,
+      );
 
   List<AntiWasteSuggestion> antiWasteSuggestions({
     required String input,
