@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../core/design/responsive.dart';
 import '../../core/l10n/app_strings.dart';
 import '../../domain/recipe/recipe.dart';
+import '../../domain/search/local_recipe_nearest_neighbors.dart';
 
 class RecipeCard extends StatelessWidget {
   const RecipeCard({
@@ -122,6 +123,8 @@ class RecipeDetailPage extends StatelessWidget {
     required this.metricUnits,
     required this.favorite,
     required this.onToggleFavorite,
+    this.related = const <RelatedRecipeHit>[],
+    this.onOpenRelated,
   });
 
   final Recipe recipe;
@@ -129,6 +132,8 @@ class RecipeDetailPage extends StatelessWidget {
   final bool metricUnits;
   final bool favorite;
   final VoidCallback onToggleFavorite;
+  final List<RelatedRecipeHit> related;
+  final ValueChanged<Recipe>? onOpenRelated;
 
   @override
   Widget build(BuildContext context) {
@@ -279,6 +284,28 @@ class RecipeDetailPage extends StatelessWidget {
                 icon: Icons.lightbulb_outline,
                 title: strings.chefTips,
                 child: Text(text.chefTips),
+              ),
+            ],
+            if (related.isNotEmpty && onOpenRelated != null) ...<Widget>[
+              const SizedBox(height: 18),
+              _SectionCard(
+                icon: Icons.hub_outlined,
+                title: strings.similarRecipes,
+                child: Column(
+                  children: <Widget>[
+                    for (final RelatedRecipeHit hit in related)
+                      ListTile(
+                        contentPadding: EdgeInsets.zero,
+                        title: Text(hit.recipe.textFor(languageCode).title),
+                        subtitle: Text(strings.similarRecipeReason(
+                          hit.sharedIngredients,
+                          hit.minutesDifference,
+                        )),
+                        trailing: const Icon(Icons.chevron_right),
+                        onTap: () => onOpenRelated!(hit.recipe),
+                      ),
+                  ],
+                ),
               ),
             ],
           ],
