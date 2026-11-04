@@ -264,7 +264,7 @@ class _HomeShellState extends State<HomeShell> {
       MaterialPageRoute<void>(
         builder: (BuildContext context) {
           return AnimatedBuilder(
-            animation: _recipeController,
+            animation: Listenable.merge([_recipeController, _premiumController]),
             builder: (BuildContext context, Widget? child) {
               return RecipeDetailPage(
                 recipe: recipe,
