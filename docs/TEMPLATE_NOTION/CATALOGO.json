@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "application": "TasteAI",
+  "repository": "riccardopinato/TasteAI",
+  "catalogue_type": "public_research_index",
+  "updated_at": "2026-11-09",
+  "master_reference": "riccardopinato/Idee-app-Archivi-riferimenti/17-RICERCA-TEMPLATE-UX",
+  "entries": [
+    {
+      "id": "TN-TASTEAI-0001",
+      "master_ref": "TPLUX-REF-0012",
+      "title": "Meal & Diet Planner",
+      "app_fit": "PRIMARY_CANDIDATE",
+      "note": "Ricette, ingredienti e piano pasti; usare solo il catalogo ricette verificato, dati nutrizionali da convalidare. Non introdurre prescrizioni dietetiche.",
+      "evidence_level": "E2_EXPORT_STRUCTURE_VERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED_FROM_THIS_SOURCE",
+      "product_status": "RESEARCH_ONLY",
+      "reuse_mode": "APP_NATIVE_ORIGINAL_ONLY",
+      "source_audit_url": "https://github.com/riccardopinato/Idee-app-Archivi-riferimenti/blob/main/17-RICERCA-TEMPLATE-UX/LOTTO_NOTION_2026_11_09_12_ZIP.md"
+    },
+    {
+      "id": "TN-TASTEAI-0002",
+      "master_ref": "TPLUX-REF-0009",
+      "title": "Shopping List",
+      "app_fit": "SECONDARY_CANDIDATE",
+      "note": "Lista ingredienti per cucinare: usare il motore ricette/anti-spreco esistente, se lo sviluppo futuro la autorizza.",
+      "evidence_level": "E2_EXPORT_STRUCTURE_VERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED_FROM_THIS_SOURCE",
+      "product_status": "RESEARCH_ONLY",
+      "reuse_mode": "APP_NATIVE_ORIGINAL_ONLY",
+      "source_audit_url": "https://github.com/riccardopinato/Idee-app-Archivi-riferimenti/blob/main/17-RICERCA-TEMPLATE-UX/LOTTO_NOTION_2026_11_09_12_ZIP.md"
+    }
+  ]
+}
