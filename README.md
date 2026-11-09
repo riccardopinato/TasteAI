@@ -73,3 +73,8 @@ The remaining external configuration gates are documented in `docs/RELEASE_CHECK
 - Google OAuth client IDs and signing fingerprints;
 - RevenueCat products/entitlement/store sandbox;
 - production Android signing and store metadata.
+
+
+## Template Notion — ricerca
+
+[Apri il catalogo di TasteAI](docs/TEMPLATE_NOTION/README.md). Riferimenti di design e funzionalità, non template Notion importati né acquisti attivi.
