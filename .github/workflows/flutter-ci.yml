@@ -106,7 +106,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "chore: persist Flutter iOS scaffold [skip ci]"
-          git push
+          git push origin HEAD:refs/heads/tasteai-flutter-v0.13-final-polish
 
   ios-validate:
     runs-on: macos-latest
