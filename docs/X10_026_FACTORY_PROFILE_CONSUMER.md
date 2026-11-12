@@ -1,0 +1,9 @@
+# X10-026 — second independent Flutter consumer candidate: TasteAI
+
+Factory baseline `riccardopinato/App-Factory-Core@c5adc147046beb7024629466d10eeb799c3c2619` (Master v27, Index v29). Shared internal donor: [factory_profile_kit v0.1.0](https://github.com/riccardopinato/Idee-app-Archivi-riferimenti/tree/1d1a8628e25f58b788b013cf6955763d00363cdc/19-APP-FACTORY-10X/flutter_kits/profile), immutable Git SHA `1d1a8628e25f58b788b013cf6955763d00363cdc` and lockfile.
+
+**Scope:** read-only `tasteAiFactoryProfileSnapshot(AppSettingsController)` exposes the *existing* TasteAI locale through an explicit opt-in, no new persistence/identity, no ads, no conversion, no new consent, no cloud, no backup mutation. The application continues using its own settings, units and language. No migration is executed on real user data. Source-backed consumer tests use the genuine app `AppSettingsController` and an in-memory `AppPreferencesStore`.
+
+**Compatibility & rollback:** this consumer imports the exact same source kit SHA as [Anna's Diary PR #307](https://github.com/riccardopinato/Agenda-per-Anna/pull/307) merged to `6004677f6e1a4e04abe4147a3a706a8a35a7a94b`. To revert this source pilot, remove the Git dependency, its exact lock record, `lib/app/factory_profile_compat.dart`, associated tests and CI workflow. Existing TasteAI preference bytes are unchanged; no data rollback/migration. The unrelated CamperBoss draft PR #33 remains gated by product STEP16 and is not needed as the second consumer.
+
+**Evidence boundary:** CI `flutter analyze`, full `flutter test`, `flutter build web --release` on exact PR head; independent Codex review. These establish SOURCE+CI compatibility, **not** production activation, device QA, secure profile migration, OAuth, entitlement, physical release, Golden product admission or Store readiness. X10-026 task promotion requires two exact-source consumer results and reviewed rollback evidence; no Golden promotion from this PR alone.
