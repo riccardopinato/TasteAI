@@ -1,6 +1,8 @@
 name: TasteAI Flutter CI
 
 on:
+  pull_request:
+    branches: [main]
   push:
     branches:
       - 'tasteai-flutter-v*'
@@ -21,6 +23,7 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
+          flutter-version: '3.47.5'
           channel: stable
           cache: true
 
@@ -113,6 +116,7 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
+          flutter-version: '3.47.5'
           channel: stable
           cache: true
 
