@@ -1,0 +1,45 @@
+name: TasteAI — App Factory profile consumer source gate
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'pubspec.yaml'
+      - 'pubspec.lock'
+      - 'lib/app/factory_profile_compat.dart'
+      - 'test/x10_026_factory_profile_consumer_test.dart'
+      - 'docs/X10_026_FACTORY_PROFILE_CONSUMER.md'
+      - '.github/workflows/factory-profile-consumer.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'pubspec.yaml'
+      - 'pubspec.lock'
+      - 'lib/app/factory_profile_compat.dart'
+      - 'test/x10_026_factory_profile_consumer_test.dart'
+      - '.github/workflows/factory-profile-consumer.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout exact commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Set up Flutter
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
+        with:
+          flutter-version: '3.47.5'
+          channel: stable
+          cache: true
+      - name: Resolve frozen dependencies
+        run: flutter pub get --enforce-lockfile
+      - name: Analyze app including shared kit compatibility
+        run: flutter analyze
+      - name: Full Flutter test suite
+        run: flutter test
+      - name: Web release source build
+        run: flutter build web --release
+      - name: Evidence boundary
+        run: echo 'X10-026 second consumer SOURCE+CI only; not runtime or Play.'
